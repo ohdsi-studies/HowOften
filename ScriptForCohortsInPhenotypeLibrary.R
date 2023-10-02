@@ -358,6 +358,7 @@ outcomes <- allCohorts |>
       dplyr::pull(cohortId)
   )) |>
   dplyr::inner_join(fullPhenotypeLog)  |> 
+  dplyr::filter(!cohortId %in% c(subsetOfCohorts$howOften$cohortId)) |>  #remove cohorts that are part of HowOften as Drug Cohorts
   dplyr::select(cohortId,
                 cohortName,
                 cleanWindow) |> 
