@@ -15,7 +15,8 @@ cohortsThatAreInteresting <- c(30, 33, 43, 61, 142, 235, 236, 240, 248, 251, 253
                                383, 389, 394, 395, 401, 404, 405, 411,
                                702, 703, 74, 705, 706, 710, 712, 715, 716, 717)
 cohortsThatAreDuplicates <- c(1015, 747, 771, 772, 993, 997)
-cohortsThatWontAddValue <- c()
+cohortsThatWontAddValue <- c(325,
+                             257)
 
 fullPhenotypeLog <- fullPhenotypeLog |> 
   dplyr::filter(!cohortId %in% c(cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems,
@@ -67,10 +68,10 @@ subsetOfCohorts$foundInVisit <- fullPhenotypeLog |>
   dplyr::mutate(reasonVisit = 1) # debatable
 
 # All cohorts flagged as symptoms.
-subsetOfCohorts$foundInSymptoms <- fullPhenotypeLog |>
-  dplyr::filter(stringr::str_detect(string = toupper(hashTag), pattern = "#SYMPTOMS")) |>
-  dplyr::select(cohortId) |>
-  dplyr::mutate(reasonSymptoms = 1)
+# subsetOfCohorts$foundInSymptoms <- fullPhenotypeLog |>
+#   dplyr::filter(stringr::str_detect(string = toupper(hashTag), pattern = "#SYMPTOMS")) |>
+#   dplyr::select(cohortId) |>
+#   dplyr::mutate(reasonSymptoms = 1)
 
 # All cohorts that were submitted to the OHDSI PhenotypeLibrary on or after August 1st 2023
 subsetOfCohorts$recentSubmission <- fullPhenotypeLog |>
@@ -114,10 +115,10 @@ subsetOfCohorts$jillHardinCohorts <- fullPhenotypeLog |>
   dplyr::select(cohortId) |>
   dplyr::mutate(reasonJillHardin = 1)
 
-subsetOfCohorts$thatAreInteresting <- fullPhenotypeLog |> 
-  dplyr::filter(cohortId %in% c(cohortsThatAreInteresting)) |>
-  dplyr::select(cohortId) |>
-  dplyr::mutate(reasonIsInteresting = 1)
+# subsetOfCohorts$thatAreInteresting <- fullPhenotypeLog |> 
+#   dplyr::filter(cohortId %in% c(cohortsThatAreInteresting)) |>
+#   dplyr::select(cohortId) |>
+#   dplyr::mutate(reasonIsInteresting = 1)
 ## combine
 
 allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
@@ -132,9 +133,9 @@ allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
   dplyr::left_join(subsetOfCohorts$libraryIndicationCohorts) |>
   dplyr::left_join(subsetOfCohorts$howOften) |>
   dplyr::left_join(subsetOfCohorts$foundInVisit) |> 
-  dplyr::left_join(subsetOfCohorts$foundInSymptoms) |> 
+  # dplyr::left_join(subsetOfCohorts$foundInSymptoms) |> 
   dplyr::left_join(subsetOfCohorts$jillHardinCohorts) |> 
-  dplyr::left_join(subsetOfCohorts$thatAreInteresting) |> 
+  # dplyr::left_join(subsetOfCohorts$thatAreInteresting) |> 
   tidyr::replace_na(
     replace = list(
       reasonBaseCohort = 0,
@@ -167,6 +168,20 @@ allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
                   exitPersistenceWindow,
                   collapseEraPad)
 
+# if we decide to filter
+# toFilter <- allCohorts |> 
+#   dplyr::filter(
+#     reasonBaseCohort == 1 |
+#       reasonDme == 1 |
+#       reasonAesi == 1 |
+#       reasonLegend == 1 |
+#       reasonRecentlyPosted == 1 |
+#       reasonAnalysis3Indication == 1 |
+#       reasonHowOftenAnalysis3 |
+#       reasonJillHardin == 1
+#   ) |> 
+#   dplyr::select(cohortId) |> 
+#   dplyr::distinct()
 
 # Step 3: Assign clean window ----
 ## All cohorts get a default clean window ----
