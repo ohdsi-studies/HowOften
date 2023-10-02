@@ -18,7 +18,7 @@ cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
                                     analysis2InputSpecifications$oId) |> unique() |> sort()
   
   
-cohortsThatAreDuplicates <- c(1015, 747, 771, 772, 993, 997)
+cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997)
 cohortsThatWontAddValue <- c(325,
                              257)
 
