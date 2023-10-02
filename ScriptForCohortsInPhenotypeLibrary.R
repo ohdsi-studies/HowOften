@@ -413,6 +413,7 @@ targets <- allCohorts |>
       subsetOfCohorts$libraryIndicationCohorts$cohortId
     )
   ) |>
+  dplyr::filter(cohortId != 1071) |> 
   dplyr::inner_join(fullPhenotypeLog) |> 
   dplyr::select(cohortId,
                 cohortName) |> 
