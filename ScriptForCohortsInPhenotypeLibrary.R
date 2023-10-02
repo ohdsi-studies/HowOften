@@ -11,9 +11,13 @@ fullPhenotypeLog <- PhenotypeLibrary::getPhenotypeLog() |>
 
 # any overides
 cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems <- c(23, 344)
-cohortsThatAreInteresting <- c(30, 33, 43, 61, 142, 235, 236, 240, 248, 251, 253, 329, 334, 372, 373, 375,
-                               383, 389, 394, 395, 401, 404, 405, 411,
-                               702, 703, 74, 705, 706, 710, 712, 715, 716, 717)
+
+analysis2InputSpecifications <- readxl::read_excel("analysis_specifications/analysis2InputSpecifications.xlsx")
+
+cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
+                                    analysis2InputSpecifications$oId) |> unique() |> sort()
+  
+  
 cohortsThatAreDuplicates <- c(1015, 747, 771, 772, 993, 997)
 cohortsThatWontAddValue <- c(325,
                              257)
@@ -115,10 +119,10 @@ subsetOfCohorts$jillHardinCohorts <- fullPhenotypeLog |>
   dplyr::select(cohortId) |>
   dplyr::mutate(reasonJillHardin = 1)
 
-# subsetOfCohorts$thatAreInteresting <- fullPhenotypeLog |> 
-#   dplyr::filter(cohortId %in% c(cohortsThatAreInteresting)) |>
-#   dplyr::select(cohortId) |>
-#   dplyr::mutate(reasonIsInteresting = 1)
+subsetOfCohorts$cohortsThatArePartOfAnalysis <- fullPhenotypeLog |>
+  dplyr::filter(cohortId %in% c(cohortsThatArePartOfAnlalysis2)) |>
+  dplyr::select(cohortId) |>
+  dplyr::mutate(reasonAnalysis2 = 1)
 ## combine
 
 allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
@@ -135,7 +139,7 @@ allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
   dplyr::left_join(subsetOfCohorts$foundInVisit) |> 
   # dplyr::left_join(subsetOfCohorts$foundInSymptoms) |> 
   dplyr::left_join(subsetOfCohorts$jillHardinCohorts) |> 
-  # dplyr::left_join(subsetOfCohorts$thatAreInteresting) |> 
+  dplyr::left_join(subsetOfCohorts$cohortsThatArePartOfAnalysis) |>
   tidyr::replace_na(
     replace = list(
       reasonBaseCohort = 0,
@@ -149,7 +153,7 @@ allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
       reasonVisit = 0,
       reasonSymptoms = 0,
       reasonJillHardin = 0,
-      reasonIsInteresting = 0
+      reasonAnalysis2 = 0
     )
   ) |> 
   dplyr::inner_join(
@@ -388,7 +392,8 @@ for (i in (1:nrow(analysis2CombinationsUnique))) {
     dplyr::filter(
       cohortId %in% c(analysis2InputSpecifications |> 
                         dplyr::inner_join(combi) |> 
-                        dplyr::pull(tId))
+                        dplyr::pull(tId) |> 
+                        unique())
     ) |>
     dplyr::inner_join(fullPhenotypeLog) |> 
     dplyr::select(cohortId,
@@ -402,7 +407,8 @@ for (i in (1:nrow(analysis2CombinationsUnique))) {
     dplyr::filter(
       cohortId %in% c(analysis2InputSpecifications |> 
                         dplyr::inner_join(combi) |> 
-                        dplyr::pull(oId))
+                        dplyr::pull(oId) |> 
+                        unique())
     ) |>
     dplyr::inner_join(fullPhenotypeLog) |> 
     dplyr::select(cohortId,
@@ -418,7 +424,6 @@ for (i in (1:nrow(analysis2CombinationsUnique))) {
                                                                            "_",
                                                                            combi$id,
                                                                            ".xlsx"))
-    
 }
 
 ## Analysis 3 ----
