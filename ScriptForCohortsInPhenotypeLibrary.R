@@ -18,9 +18,58 @@ cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
                                     analysis2InputSpecifications$oId) |> unique() |> sort()
   
   
-cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997)
+cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,
+                              1077, 900, 726, #anaphylaxis
+                              986, 730, # pancreatitis
+                              463, # remove in favor sepsis or septic shocl
+                              1086, 692, 691, 296, 63, # duplicates of transverse myelitis
+                              898, 725, # AKI 
+                              994, 410, # UTI
+                              881, 71, 924, #MI
+                              267, 964, #CKD
+                              733, #DRESS
+                              1085, 234, # Appendicitis
+                              521, #Asthma
+                              513, #atrial fibrillation
+                              134, #ADHD
+                              738, #Autoimmune hemolytic anemia
+                              991, # Breast cancer
+                              470, #CLL
+                              746, #CTEPH
+                              992, #DKA
+                              856, #Migraine
+                              256, #Bells palsy
+                              935, #Hemorrhagic stroke
+                              979, #Heart failure
+                              850, #IBD
+                              944, # ischemic stroke
+                              215,216, #ITP
+                              239, #narcolepsy
+                              1000, #nausea
+                              737, #febrile neutropenia
+                              1001, # peripheral edema
+                              919, #cardiac arrhythmia
+                              927, #dementia
+                              947, #neutropenia
+                              957, #Type 2 DM
+                              507, #pneumonia
+                              740, #pulmonary arterial hypertension
+                              950, #rhabdomyolysis
+                              277, #sudden hearing loss
+                              217 #TMA
+                              )
 cohortsThatWontAddValue <- c(325,
-                             257)
+                             257,
+                             976, 667,	794,	939,	998,	533,	#not useful
+                             742,	945,	901,	917,	#not useful
+                             918,	922,	882,	928,	943,	946,	#not useful
+                             955,	1002,	948,	43,	411,	1073,	#not useful
+                             892,	982,	953,	690,	954,	#not useful
+                             920,	956,	30,	1005,	1006,	963, #not useful
+                             1019 # not relevant glyecemic control
+                             
+                             
+                             )
 
 fullPhenotypeLog <- fullPhenotypeLog |> 
   dplyr::filter(!cohortId %in% c(cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems,
@@ -190,7 +239,7 @@ allCohorts <- dplyr::bind_rows(subsetOfCohorts) |>
 # Step 3: Assign clean window ----
 ## All cohorts get a default clean window ----
 allCohorts <- allCohorts |>
-  dplyr::mutate(cleanWindow = 0,
+  dplyr::mutate(cleanWindow = 9999,
                 cleanWindowAssigned = 0,
                 cleanWindowRule = "") 
 
