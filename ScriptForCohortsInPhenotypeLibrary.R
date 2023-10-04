@@ -18,10 +18,11 @@ cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
                                     analysis2InputSpecifications$oId) |> unique() |> sort()
   
   
-cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,
-                              1077, 900, 726, #anaphylaxis
-                              986, 730, # pancreatitis
-                              463, # remove in favor sepsis or septic shocl
+cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	 #withdrawn in phenotype library as of v3.25.0 so wont matter
+                              1077, #withdrawn 
+                              900, 726, #anaphylaxis replaced with 1076
+                              986, 730, # pancreatitis using 251
+                              463, # remove in favor sepsis or septic shock using 411
                               1086, 692, 691, 296, 63, # duplicates of transverse myelitis
                               898, 725, # AKI 
                               994, 410, # UTI
@@ -60,16 +61,22 @@ cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,
                               )
 cohortsThatWontAddValue <- c(325,
                              257,
-                             976, 667,	794,	939,	998,	533,	#not useful
-                             742,	945,	901,	917,	#not useful
-                             918,	922,	882,	928,	943,	946,	#not useful
-                             955,	1002,	948,	43,	411,	1073,	#not useful
-                             892,	982,	953,	690,	954,	#not useful
-                             920,	956,	30,	1005,	1006,	963, #not useful
-                             1019 # not relevant glyecemic control
-                             
+                             976, 939,	998,		#not useful
+                             742,	945,	901,	917,	#not useful from legend
+                             918,	922,	882,	928,	943,	946,	#not useful from legend
+                             955,	1002,	948,	411,	#not useful from legend
+                             892,	982,	953, 954,	#not useful from legend
+                             920,	956,	1005,	1006,	963, #not useful from legend
+                             1019, # not relevant glyecemic control
+                             43, # in favor or tb with treatment gowthams
+                             690 # referent
                              
                              )
+
+forFixing <- c(
+  667,	533, #jills cohorts
+  1073 #joels
+)
 
 fullPhenotypeLog <- fullPhenotypeLog |> 
   dplyr::filter(!cohortId %in% c(cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems,
@@ -160,11 +167,12 @@ subsetOfCohorts$jillHardinCohorts <- fullPhenotypeLog |>
   dplyr::filter(cohortId %in% c(134,
                                 470,
                                 667,
-                                690,
+                                # 690, replace with 123
                                 533,
                                 521,
                                 591,
-                                466)) |>
+                                466,
+                                123)) |>
   dplyr::select(cohortId) |>
   dplyr::mutate(reasonJillHardin = 1)
 
@@ -345,7 +353,7 @@ cleanWindow$cleanWindow9999 <- c(466, 470, 521, 591, 667, 999, 1071)
 cleanWindow$cleanWindow365 <- c(63, 74, 215, 216, 276, 277, 412, 691, 692, 693, 694, 729, 732, 738, 742, 785, 1075, 1080, 1081, 1082, 1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091)
 cleanWindow$cleanWindow183 <- c(1078, 1079)
 cleanWindow$cleanWindow180 <- c(218, 727, 737)
-cleanWindow$cleanWindow30 <- c(362, 533, 690, 726, 783, 784, 794, 938, 939, 979, 980, 1076, 1077)
+cleanWindow$cleanWindow30 <- c(362, 533, 690, 726, 783, 784, 794, 938, 939, 979, 980, 1076, 1077, 123)
 cleanWindow$cleanWindow1 <- c(24, 257, 325, 346, 347, 707)
 
 cleanWindowToAssign <-
