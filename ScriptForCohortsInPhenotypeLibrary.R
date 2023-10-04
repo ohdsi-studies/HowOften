@@ -18,8 +18,7 @@ cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
                                     analysis2InputSpecifications$oId) |> unique() |> sort()
   
   
-cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	 #withdrawn in phenotype library as of v3.25.0 so wont matter
-                              1077, #withdrawn 
+cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	1077, #withdrawn in phenotype library as of v3.25.0 so wont matter
                               900, 726, #anaphylaxis replaced with 1076
                               986, 730, # pancreatitis using 251
                               463, # remove in favor sepsis or septic shock using 411
@@ -67,7 +66,7 @@ cohortsThatWontAddValue <- c(325,
                              955,	1002,	948,	411,	#not useful from legend
                              892,	982,	953, 954,	#not useful from legend
                              920,	956,	1005,	1006,	963, #not useful from legend
-                             1019, # not relevant glyecemic control
+                             1019, # wont work. pregnancy logic
                              43, # in favor or tb with treatment gowthams
                              690 # referent
                              
