@@ -68,12 +68,12 @@ cohortsThatWontAddValue <- c(325,
                              920,	956,	1005,	1006,	963, #not useful from legend
                              1019, # wont work. pregnancy logic
                              43, # in favor or tb with treatment gowthams
-                             690 # referent
-                             
+                             690, # referent
+                             1016 # nobody asked for it
                              )
 
 forFixing <- c(
-  667,	533, #jills cohorts
+  533, #jills cohorts
   1073 #joels
 )
 
@@ -165,11 +165,13 @@ subsetOfCohorts$howOften <- fullPhenotypeLog |>
 subsetOfCohorts$jillHardinCohorts <- fullPhenotypeLog |>
   dplyr::filter(cohortId %in% c(134,
                                 470,
-                                667,
+                                383, # replace previously selected referrent cohort for atopic dermatitis
+                                # 667, remove after talking to Jill
                                 # 690, replace with 123
-                                533,
+                                372, # replace jills selection of referent 533,
+                                1151,
                                 521,
-                                591,
+                                1151, #replacing previously selected Jills 591,
                                 466,
                                 123)) |>
   dplyr::select(cohortId) |>
