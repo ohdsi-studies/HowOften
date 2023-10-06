@@ -68,18 +68,25 @@ cohortsThatWontAddValue <- c(325,
                              976, 939,	998,		#not useful
                              742,	945,	901,	917,	#not useful from legend
                              918,	922,	882,	928,	943,	946,	#not useful from legend
-                             955,	1002,	948,	411,	#not useful from legend
-                             892,	982,	953, 954,	#not useful from legend
-                             920,	956,	1005,	1006,	963, #not useful from legend
+                             955,	1002,	948,	#not useful from legend
+                             982,	953, 954,	#not useful from legend
+                             1005,	1006,	963, #not useful from legend
                              1019, # wont work. pregnancy logic
-                             43, # in favor or tb with treatment gowthams
                              1016, # nobody asked for it
                              1017 #rare event
                              )
 
+
+
 #checking
 setdiff(cohortsThatWontAddValue,
         fullPhenotypeLog$cohortId)
+
+fullPhenotypeLog |>
+  dplyr::filter(cohortId %in% c(
+    intersect(cohortsThatWontAddValue,
+              cohortsThatArePartOfAnlalysis2)
+  )) |> View()
 
 fullPhenotypeLog <- fullPhenotypeLog |> 
   dplyr::filter(!cohortId %in% c(cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems,
