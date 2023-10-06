@@ -23,8 +23,6 @@ setdiff(cohortsThatArePartOfAnlalysis2,
 intersect(cohortsThatArePartOfAnlalysis2, 
         fullPhenotypeLog$cohortId) |> length() == length(cohortsThatArePartOfAnlalysis2)
 
-setdiff(cohortsThatAreDuplicates,
-        fullPhenotypeLog$cohortId)
 cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenotype library as of v3.25.0 so wont matter
                               900, 726, #anaphylaxis replaced with 1076
                               986, 730, # pancreatitis using 251
@@ -38,7 +36,6 @@ cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenot
                               134, #ADHD
                               738, #Autoimmune hemolytic anemia
                               991, # Breast cancer
-                              470, #CLL
                               746, #CTEPH
                               992, #DKA
                               856, #Migraine
@@ -56,12 +53,15 @@ cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenot
                               927, #dementia
                               947, #neutropenia
                               957, #Type 2 DM
-                              507, #pneumonia replace with 19
                               740, #pulmonary arterial hypertension
                               950, #rhabdomyolysis
                               277, #sudden hearing loss
                               217 #TMA
                               )
+
+setdiff(cohortsThatAreDuplicates,
+        fullPhenotypeLog$cohortId)
+
 
 cohortsThatWontAddValue <- c(325,
                              257,
@@ -73,14 +73,12 @@ cohortsThatWontAddValue <- c(325,
                              920,	956,	1005,	1006,	963, #not useful from legend
                              1019, # wont work. pregnancy logic
                              43, # in favor or tb with treatment gowthams
-                             690, # referent
                              1016 # nobody asked for it
                              )
 
-forFixing <- c(
-  533, #jills cohorts
-  1073 #joels
-)
+#checking
+setdiff(cohortsThatWontAddValue,
+        fullPhenotypeLog$cohortId)
 
 fullPhenotypeLog <- fullPhenotypeLog |> 
   dplyr::filter(!cohortId %in% c(cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems,
@@ -113,7 +111,7 @@ subsetOfCohorts$foundInLibraryOutcomeDme <- fullPhenotypeLog |>
   dplyr::select(cohortId) |>
   dplyr::mutate(reasonDme = 1)
 
-## AESI cohorts built for covide anlaysis. These are mostly imported from the covid aesi studies
+## AESI cohorts built for covid analysis. These are mostly imported from the covid aesi studies
 subsetOfCohorts$foundInLibraryOutcomeAesi <- fullPhenotypeLog |>
   dplyr::filter(stringr::str_detect(string = toupper(hashTag), pattern = "#AESI")) |>
   dplyr::select(cohortId) |>
@@ -355,12 +353,12 @@ ids <- allCohorts |>
 ### Heuristic based: assign clean window  ----
 ### (Decided by Azza and Gowtham)
 cleanWindow <- c()
-cleanWindow$cleanWindow9999 <- c(466, 470, 521, 591, 667, 999, 1071)
-cleanWindow$cleanWindow365 <- c(63, 74, 215, 216, 276, 277, 412, 691, 692, 693, 694, 729, 732, 738, 742, 785, 1075, 1080, 1081, 1082, 1083, 1084, 1085, 1086, 1087, 1088, 1089, 1090, 1091)
+cleanWindow$cleanWindow9999 <- c(999, 1071)
+cleanWindow$cleanWindow365 <- c(74, 276, 412, 693, 694, 729, 732, 785, 1075, 1080, 1081, 1082, 1083, 1084, 1087, 1088, 1089, 1090, 1091)
 cleanWindow$cleanWindow183 <- c(1078, 1079)
-cleanWindow$cleanWindow180 <- c(218, 727, 737)
-cleanWindow$cleanWindow30 <- c(362, 533, 690, 726, 783, 784, 794, 938, 939, 979, 980, 1076, 1077, 123)
-cleanWindow$cleanWindow1 <- c(24, 257, 325, 346, 347, 707)
+cleanWindow$cleanWindow180 <- c(218, 727)
+cleanWindow$cleanWindow30 <- c(362, 783, 784, 938, 980, 1076, 123)
+cleanWindow$cleanWindow1 <- c(24, 346, 347, 707)
 
 cleanWindowToAssign <-
   dplyr::bind_rows(
