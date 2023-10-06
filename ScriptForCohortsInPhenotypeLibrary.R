@@ -73,7 +73,8 @@ cohortsThatWontAddValue <- c(325,
                              920,	956,	1005,	1006,	963, #not useful from legend
                              1019, # wont work. pregnancy logic
                              43, # in favor or tb with treatment gowthams
-                             1016 # nobody asked for it
+                             1016, # nobody asked for it
+                             1017 #rare event
                              )
 
 #checking
@@ -353,11 +354,14 @@ ids <- allCohorts |>
 ### Heuristic based: assign clean window  ----
 ### (Decided by Azza and Gowtham)
 cleanWindow <- c()
-cleanWindow$cleanWindow9999 <- c(999, 1071)
-cleanWindow$cleanWindow365 <- c(74, 276, 412, 693, 694, 729, 732, 785, 1075, 1080, 1081, 1082, 1083, 1084, 1087, 1088, 1089, 1090, 1091)
+cleanWindow$cleanWindow9999 <- c(334, 405, 999, 1071)
+cleanWindow$cleanWindow365 <- c(32, 74, 276, 412, 693, 694, 729, 732, 734, 739, 
+                                1075, 1080, 1081, 1082, 1083, 1084, 1087, 
+                                1088, 1089, 1090, 1091)
 cleanWindow$cleanWindow183 <- c(1078, 1079)
-cleanWindow$cleanWindow180 <- c(218, 727)
-cleanWindow$cleanWindow30 <- c(362, 783, 784, 938, 980, 1076, 123)
+cleanWindow$cleanWindow180 <- c(218, 716, 727, 731, 785)
+cleanWindow$cleanWindow30 <- c(19, 362, 743, 783, 784, 938, 980, 1076, 123)
+cleanWindow$cleanWindow90 <- c(251)
 cleanWindow$cleanWindow1 <- c(24, 346, 347, 707)
 
 cleanWindowToAssign <-
