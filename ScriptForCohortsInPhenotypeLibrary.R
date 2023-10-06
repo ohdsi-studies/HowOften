@@ -367,7 +367,7 @@ cleanWindow$cleanWindow365 <- c(32, 74, 276, 412, 693, 694, 729, 732, 734, 739,
                                 1088, 1089, 1090, 1091)
 cleanWindow$cleanWindow183 <- c(1078, 1079)
 cleanWindow$cleanWindow180 <- c(218, 716, 727, 731, 785)
-cleanWindow$cleanWindow30 <- c(19, 362, 411, 743, 783, 784, 938, 980, 1076, 123)
+cleanWindow$cleanWindow30 <- c(19, 123, 362, 411, 743, 783, 784, 938, 980, 1076, 1104)
 cleanWindow$cleanWindow90 <- c(251)
 cleanWindow$cleanWindow1 <- c(24, 346, 347, 707)
 
