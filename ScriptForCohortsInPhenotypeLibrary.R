@@ -1,4 +1,4 @@
-remotes::install_github(repo = "OHDSI/PhenotypeLibrary", ref = "v3.24.0")
+remotes::install_github(repo = "OHDSI/PhenotypeLibrary", ref = "v3.25.0")
 
 
 # Step 1: get all cohort definition in OHDSI PhenotypeLibrary ----
@@ -10,18 +10,24 @@ fullPhenotypeLog <- PhenotypeLibrary::getPhenotypeLog() |>
   ))
 
 # any overides
-cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems <- c(23, 344)
+cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems <- c(344)
 
 analysis2InputSpecifications <- readxl::read_excel("analysis_specifications/analysis2InputSpecifications.xlsx")
 
 cohortsThatArePartOfAnlalysis2 <- c(analysis2InputSpecifications$tId,
                                     analysis2InputSpecifications$oId) |> unique() |> sort()
-  
-  
-cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	1077, #withdrawn in phenotype library as of v3.25.0 so wont matter
+
+# checks
+setdiff(cohortsThatArePartOfAnlalysis2, 
+          fullPhenotypeLog$cohortId)
+intersect(cohortsThatArePartOfAnlalysis2, 
+        fullPhenotypeLog$cohortId) |> length() == length(cohortsThatArePartOfAnlalysis2)
+
+setdiff(cohortsThatAreDuplicates,
+        fullPhenotypeLog$cohortId)
+cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenotype library as of v3.25.0 so wont matter
                               900, 726, #anaphylaxis replaced with 1076
                               986, 730, # pancreatitis using 251
-                              463, # remove in favor sepsis or septic shock using 411
                               1086, 692, 691, 296, 63, # duplicates of transverse myelitis
                               898, 725, # AKI 
                               994, 410, # UTI
@@ -29,8 +35,6 @@ cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	1077, #withdrawn in 
                               267, 964, #CKD
                               733, #DRESS
                               1085, 234, # Appendicitis
-                              521, #Asthma
-                              513, #atrial fibrillation
                               134, #ADHD
                               738, #Autoimmune hemolytic anemia
                               991, # Breast cancer
@@ -52,12 +56,13 @@ cohortsThatAreDuplicates <- c(1015, 771, 772, 993, 997,794,	1077, #withdrawn in 
                               927, #dementia
                               947, #neutropenia
                               957, #Type 2 DM
-                              507, #pneumonia
+                              507, #pneumonia replace with 19
                               740, #pulmonary arterial hypertension
                               950, #rhabdomyolysis
                               277, #sudden hearing loss
                               217 #TMA
                               )
+
 cohortsThatWontAddValue <- c(325,
                              257,
                              976, 939,	998,		#not useful
@@ -164,15 +169,15 @@ subsetOfCohorts$howOften <- fullPhenotypeLog |>
 # These are cohorts that Patrick built for use in Analysis 3
 subsetOfCohorts$jillHardinCohorts <- fullPhenotypeLog |>
   dplyr::filter(cohortId %in% c(134,
-                                470,
+                                1027, #replaces 470 is referrent cohort, it wont be used
                                 383, # replace previously selected referrent cohort for atopic dermatitis
                                 # 667, remove after talking to Jill
                                 # 690, replace with 123
                                 372, # replace jills selection of referent 533,
                                 1151,
-                                521,
-                                1151, #replacing previously selected Jills 591,
-                                466,
+                                334, #replaces 521 which as referent
+                                1151, #replacing previously selected Jills 591 which was referrent
+                                383, # replacing referent selection of 466,
                                 123)) |>
   dplyr::select(cohortId) |>
   dplyr::mutate(reasonJillHardin = 1)
