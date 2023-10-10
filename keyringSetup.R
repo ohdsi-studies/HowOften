@@ -4,9 +4,9 @@ install.packages("keyring")
 if (Sys.getenv("STRATEGUS_KEYRING_PASSWORD") == "") {
   # set keyring password by adding STRATEGUS_KEYRING_PASSWORD='sos' to renviron
   usethis::edit_r_environ()
-  # then add STRATEGUS_KEYRING_PASSWORD='sos', save and close
+  # then add STRATEGUS_KEYRING_PASSWORD='yourPassword', save and close
   # Restart your R Session to confirm it worked
-  stop("Please add STRATEGUS_KEYRING_PASSWORD='sos' to your .Renviron file
+  stop("Please add STRATEGUS_KEYRING_PASSWORD='yourPassword' to your .Renviron file
        via usethis::edit_r_environ() as instructed, save and then restart R session")
 }
 
@@ -22,6 +22,10 @@ if (Sys.getenv("INSTANTIATED_MODULES_FOLDER") == "") {
 # Provide your environment specific values ------
 connectionDetails <- NULL # fetch/create your own connection details here
 connectionDetailsReference <- "mYDatasourceKey" # short abbreviation that describes these connection details
+
+# test the connection
+conn <- DatabaseConnector::connect(connectionDetails)
+DatabaseConnector::disconnect(conn)
 
 
 # Run the rest to setup keyring ----------
@@ -59,5 +63,6 @@ Strategus::storeConnectionDetails(
   connectionDetailsReference = connectionDetailsReference,
   keyringName = keyringName
 )
+
 
 

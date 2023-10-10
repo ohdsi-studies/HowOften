@@ -48,9 +48,9 @@ executeAnalysis <- function(analysisFile, executionSettings, analysisName, outpu
   if (dir.exists(resultsDir)) {
     unlink(resultsDir, recursive = TRUE)
   }
-  dir.create(file.path(resultsDir, "strategusOutput"), recursive = TRUE)
+  dir.create(file.path(resultsDir), recursive = TRUE)
   file.copy(file.path(outputLocation, connectionDetailsReference, "strategusOutput"),
-            file.path(resultsDir, "strategusOutput"), recursive = TRUE)
+            file.path(resultsDir), recursive = TRUE)
 
   return(NULL)
 
