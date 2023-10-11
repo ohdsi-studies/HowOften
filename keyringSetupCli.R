@@ -1,6 +1,4 @@
 # Install keyring - one time operation ---------
-#install.packages(c("keyring", "cli", "getPass"))
-
 appendToRenviron <- function(varName, value, environFile = "~/.Renviron") {
   if (file.exists(environFile))
     lines <- readLines(environFile)
@@ -15,11 +13,31 @@ appendToRenviron <- function(varName, value, environFile = "~/.Renviron") {
   writeLines(renviron, environFile)
 }
 
-
+#' Create Strategus Keyring
+#' @description
+#' CLI utility for creating a strategus keyring.
+#'
+#' This will perform the required setup for secure credentials inside a study.
+#'
+#' Creates a system wide keyring password if not already present.
+#' @export
+#' @param keyringName                   string name for keyring on system to store credentials inside of
+#' @param connectionDetailsReference    string reference name for connection details e.g. "myCdmName". This will be used
+#'                                      in strategus executions to reference your database.
 createStrategusKeyring <- function(keyringName = "HowOften",
-                                   connectionDetailsReference = 'mYDatasourceKey') {
+                                   connectionDetailsReference = 'myDatasourceKey') {
   if (!interactive()) {
-    cli::cli_abort("Requires interactive session")
+    stop("Requires interactive session")
+  }
+
+  requiredPackages <- c("keyring", "cli", "getPass")
+  requiredPackages <- requiredPackages[!requiredPackages %in% as.data.frame(installed.packages())$Package]
+
+  if (length(requiredPackages)) {
+    resp <- utils::menu(c("yes", "no"), title = paste("Package", requiredPackages, "not installed. install now?"))
+    if (resp != 1) {
+      stop("Required system packages missing for this configuration utility")
+    }
   }
 
   cli::cli_text("Creating keyring {keyringName}")
@@ -39,8 +57,14 @@ createStrategusKeyring <- function(keyringName = "HowOften",
 
   cli::cli_alert_success("STRATEGUS_KEYRING_PASSWORD environment var set")
 
-  if (Sys.getenv("INSTANTIATED_MODULES_FOLDER") == "") {
-    strategusModuleFolder <- ""
+  strategusModuleFolder <- Sys.getenv("INSTANTIATED_MODULES_FOLDER")
+  if (strategusModuleFolder == "") {
+    while (!checkmate::test_directory(strategusModuleFolder, "w")) {
+      cli::cli_alert_info("INSTANTIATED_MODULES_FOLDER environment variable not set please enter a directory:")
+      strategusModuleFolder <- readLines(n=1)
+      dir.create(strategusModuleFolder, showWarnings = FALSE)
+    }
+    Sys.setenv("INSTANTIATED_MODULES_FOLDER" = strategusModuleFolder)
     appendToRenviron("INSTANTIATED_MODULES_FOLDER", strategusModuleFolder)
   }
 
@@ -93,6 +117,7 @@ connectionDetails <-
     )
   }
   unlink(tempconnectionFile, force = TRUE)
+  cli::cli_alert_info("Removed temporary credentials file {tempconnectionFile}")
 
   keyringPassword <- Sys.getenv("STRATEGUS_KEYRING_PASSWORD") # This password is simply to avoid a prompt when creating the keyring
   # Create the keyring if it does not exist.
@@ -121,8 +146,7 @@ connectionDetails <-
     connectionDetailsReference = connectionDetailsReference,
     keyringName = keyringName
   )
-
   cli::cli_alert_success("Secure strategus keyring reference {keyringName} created")
 }
 
-createStrategusKeyringCli()
+createStrategusKeyring()
