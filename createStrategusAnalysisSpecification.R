@@ -2,8 +2,10 @@ library(readr)
 library(dplyr)
 library(readxl)
 library(PhenotypeLibrary)
+library(CohortGenerator)
 
 source("functions.R")
+source("subsets.R")
 
 genPopTargetDef <- CohortIncidence::createCohortRef(id=1071, name="persons at risk at start of year 2012-2022 with 365d prior observation")
 
@@ -45,8 +47,12 @@ outcomeMap <- data.frame()
 for (file in allFileList) {
   # the general population analysis is derived by matching the general population cohort to all T's and O's in the analysis.
   # By default, the clean window of T will be 0.
-  targets <- readxl::read_xlsx(file, sheet="targets")
-  targets$clean_window <- 0
+  targets <- data.frame()
+  if (!any(endsWith(file,overallFileList))) { # overall analysis uses background population as a T, which we will not subset
+    targets <- readxl::read_xlsx(file, sheet="targets")
+    targets$clean_window <- 0
+    targets$cohort_definition_id <- (1000 * targets$cohort_definition_id) + subsetDefs$targetSubset$definitionId
+  }
   outcomeMap <- rbind(outcomeMap, readxl::read_xlsx(file, sheet="outcomes"))
   outcomeMap <- rbind(outcomeMap, targets)
 };
@@ -54,7 +60,7 @@ outcomeMap <-outcomeMap %>% distinct() %>% dplyr::mutate(id=dplyr::row_number())
 
 # source module SettingsFunctions.R
 # CohortGeneratorModule --------------------------------------------------------
-source("https://raw.githubusercontent.com/OHDSI/CohortGeneratorModule/v0.2.0/SettingsFunctions.R")
+source("https://raw.githubusercontent.com/OHDSI/CohortGeneratorModule/v0.2.1/SettingsFunctions.R")
 # CohortIncidenceModule --------------------------------------------------------
 source("https://raw.githubusercontent.com/OHDSI/CohortIncidenceModule/v0.2.0/SettingsFunctions.R")
 
@@ -74,6 +80,11 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
   generateStats = TRUE
 )
 
+# limit analysis time between 2012-01-01 to 2022-12-31
+studyWindow <- CohortIncidence::DateRange$new();
+studyWindow$startDate <- "2012-01-01"
+studyWindow$endDate <- "2022-12-31"
+
 # Create the 7 Strategist designs
 # fileList <- azzaFileList
 # strategusFileName <- azzaFileName
@@ -81,17 +92,17 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
 
 # azza analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
 
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -103,11 +114,10 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                                     outcomes = outcomeXls$id,
                                                                     tars = c(2,3)))
   };
-
+  
   # to save time, we'll attach a clean_window = 0 and lookup the outcome ID here, and use it for the background analysis
   targets <- targets %>% distinct() %>% mutate(clean_window = 0) %>%
     dplyr::inner_join(outcomeMap %>% select("id", "cohort_definition_id", "clean_window"), by=c('cohort_definition_id', 'clean_window'))
-
   outcomes <- outcomes %>% distinct()
 
   # make the background rate for all T and Os
@@ -116,7 +126,7 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                                   outcomes = c(targets$id, outcomes$id),
                                                                   tars = c(2)))
 
-
+  # note: targets now contains the modified subset cohort IDs
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
     targetCohortDef <- targets %>% filter(cohort_definition_id == targetCohortId)
     return (CohortIncidence::createCohortRef(id=targetCohortDef$cohort_definition_id, name=targetCohortDef$cohort_definition_name))
@@ -134,13 +144,16 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                               cleanWindow = outcomeDef$clean_window))
   })
 
-
   irDesign <- CohortIncidence::createIncidenceDesign(targetDefs = targetDefs,
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
@@ -152,17 +165,17 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
 
 # andreas analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
-
+  
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -217,30 +230,34 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
-
+  
   .createAnalysisSpecification(strategusFileName, cohortDefinitionShared, cohortGeneratorModuleSpecifications, cohortIncidenceModuleSpecifications)
-
+  
 })(andreasFileList, andreasFileName)
 
 
 # Joel analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
-
+  
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -288,29 +305,33 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
-
+  
   .createAnalysisSpecification(strategusFileName, cohortDefinitionShared, cohortGeneratorModuleSpecifications, cohortIncidenceModuleSpecifications)
-
+  
 })(joelFileList, joelFileName)
 
 # Evan analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
-
+  
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -365,29 +386,33 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
-
+  
   .createAnalysisSpecification(strategusFileName, cohortDefinitionShared, cohortGeneratorModuleSpecifications, cohortIncidenceModuleSpecifications)
-
+  
 })(evanFileList, evanFileName)
 
 # Gowza analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
-
+  
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -435,14 +460,18 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
-
+  
   .createAnalysisSpecification(strategusFileName, cohortDefinitionShared, cohortGeneratorModuleSpecifications, cohortIncidenceModuleSpecifications)
-
+  
 })(gowzaFileList, gowzaFileName)
 
 # General Population analysis IIFE
@@ -506,17 +535,17 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
 
 # George analysis IIFE
 (function(fileList, strategusFileName) {
-  cohortIds <- c(genPopTargetDef$id, .getUniqueCohortIds(fileList))
-  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(cohortIds)
-
-  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
-
+  cohortIds <- .getUniqueCohortIds(fileList)
+  cohortDefinitionSet <- PhenotypeLibrary::getPlCohortDefinitionSet(c(genPopTargetDef$id, cohortIds))
+  cohortDefinitionSet <- cohortDefinitionSet |>
+    CohortGenerator::addCohortSubsetDefinition(subsetDefs$targetSubset, targetCohortIds = .getUniqueTargetCohortIds(fileList))
+  
   targets <-data.frame()
   outcomes<- data.frame()
   analysisList <- list()
-
+  
   for (file in fileList) {
-    targetXls <- readxl::read_xlsx(file, sheet="targets")
+    targetXls <- readxl::read_xlsx(file, sheet="targets") %>% mutate(cohort_definition_id = ((cohort_definition_id * 1000) + subsetDefs$targetSubset$definitionId))
     targets <- rbind(targets, targetXls)
 
     outcomeXls <- readxl::read_xlsx(file, sheet="outcomes") %>%
@@ -570,13 +599,17 @@ cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications
                                                      outcomeDefs = outcomeDefs,
                                                      tars=tars,
                                                      analysisList = analysisList,
+                                                     studyWindow = studyWindow,
                                                      strataSettings = CohortIncidence::createStrataSettings(byGender=T, byYear=T, byAge=T, ageBreaks = c(3,13,18,30,40,50,60,70,80,90)))
 
+  # Create Strategus module specifications
+  cohortDefinitionShared <- createCohortSharedResourceSpecifications(cohortDefinitionSet)
+  
   cohortIncidenceModuleSpecifications <- createCohortIncidenceModuleSpecifications(
     irDesign = irDesign$toList()
   )
-
+  
   .createAnalysisSpecification(strategusFileName, cohortDefinitionShared, cohortGeneratorModuleSpecifications, cohortIncidenceModuleSpecifications)
-
+  
 })(georgeFileList, georgeFileName)
 
