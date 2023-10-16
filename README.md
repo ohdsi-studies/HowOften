@@ -108,7 +108,7 @@ The [StrategusCodeToRun.R](StrategusCodeToRun.R) contains the script that will p
 ```
 ##=========== START OF INPUTS ==========
 keyringName <- "HowOften"
-connectionDetailsReference <- "yourCdmRef"
+connectionDetailsReference <- "mYDatasourceKey"
 workDatabaseSchema <- 'writable_schema'
 cdmDatabaseSchema <- 'cdm_schema'
 outputLocation <- '{path/to/Strategus/Output}'
