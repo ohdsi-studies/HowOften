@@ -8,6 +8,15 @@
   return (cohortIds)
 }
 
+.getUniqueTargetCohortIds <- function(fileList) {
+  cohortIds <- unique(unlist(lapply(fileList, function(file) {
+    targets <- readxl::read_xlsx(file, sheet="targets")
+    return (targets$cohort_definition_id)
+  })))
+  return (cohortIds)
+}
+
+
 #create analysis spec
 
 .createAnalysisSpecification <- function(jsonFileName, cohortDefinitionShared, cohortGeneratorSpecs, cohortIncidenceSpecs) {

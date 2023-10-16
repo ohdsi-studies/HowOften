@@ -88,13 +88,58 @@
           "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2022-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2022-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2021-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2021-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2020-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2020-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2019-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2019-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2018-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2018-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2017-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2017-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2016-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2016-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2015-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2015-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2014-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2014-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2013-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2013-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"ObservationPeriod\" : {\n\t\t\t\t\t\"UserDefinedPeriod\" : {\n\t\t\t\t\t\t\"StartDate\" : \"2012-01-01\",\n\t\t\t\t\t\t\"EndDate\" : \"2012-01-01\"\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 365,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"AdditionalCriteria\" : {\n\t\t\"Type\" : \"ALL\",\n\t\t\"CriteriaList\" : [],\n\t\t\"DemographicCriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"Age\" : {\n\t\t\t\t\t\"Value\" : 0,\n\t\t\t\t\t\"Op\" : \"bt\",\n\t\t\t\t\t\"Extent\" : 100\n\t\t\t\t},\n\t\t\t\t\"Gender\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8532,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"FEMALE\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"F\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"CONCEPT_ID\" : 8507,\n\t\t\t\t\t\t\"CONCEPT_NAME\" : \"MALE\",\n\t\t\t\t\t\t\"STANDARD_CONCEPT\" : null,\n\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"INVALID_REASON\" : null,\n\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Unknown\",\n\t\t\t\t\t\t\"CONCEPT_CODE\" : \"M\",\n\t\t\t\t\t\t\"DOMAIN_ID\" : \"Gender\",\n\t\t\t\t\t\t\"VOCABULARY_ID\" : \"Gender\",\n\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : null\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t],\n\t\t\"Groups\" : []\n\t},\n\t\"ConceptSets\" : [],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
         }
       ],
+      "subsetDefs": [
+        "{\n  \"name\": \"\",\n  \"definitionId\": 1,\n  \"subsetOperators\": [\n    {\n      \"name\": \"\",\n      \"subsetType\": \"DemographicSubsetOperator\",\n      \"ageMin\": 0,\n      \"ageMax\": 99,\n      \"gender\": [8507, 8532]\n    },\n    {\n      \"name\": \"\",\n      \"subsetType\": \"LimitSubsetOperator\",\n      \"priorTime\": 365,\n      \"followUpTime\": 0,\n      \"limitTo\": \"all\",\n      \"calendarStartDate\": \"2012-01-01\",\n      \"calendarEndDate\": \"2022-12-31\"\n    }\n  ],\n  \"packageVersion\": \"0.8.1\",\n  \"identifierExpression\": \"targetId * 1000 + definitionId\",\n  \"operatorNameConcatString\": \", \",\n  \"subsetCohortNameTemplate\": \"@baseCohortName\"\n}"
+      ],
+      "cohortSubsets": [
+        {
+          "cohortId": 748001,
+          "subsetId": 1,
+          "targetCohortId": 748
+        },
+        {
+          "cohortId": 749001,
+          "subsetId": 1,
+          "targetCohortId": 749
+        },
+        {
+          "cohortId": 775001,
+          "subsetId": 1,
+          "targetCohortId": 775
+        },
+        {
+          "cohortId": 761001,
+          "subsetId": 1,
+          "targetCohortId": 761
+        },
+        {
+          "cohortId": 782001,
+          "subsetId": 1,
+          "targetCohortId": 782
+        },
+        {
+          "cohortId": 747001,
+          "subsetId": 1,
+          "targetCohortId": 747
+        },
+        {
+          "cohortId": 750001,
+          "subsetId": 1,
+          "targetCohortId": 750
+        },
+        {
+          "cohortId": 751001,
+          "subsetId": 1,
+          "targetCohortId": 751
+        }
+      ],
       "attr_class": ["CohortDefinitionSharedResources", "SharedResources"]
     }
   ],
   "moduleSpecifications": [
     {
       "module": "CohortGeneratorModule",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "remoteRepo": "github.com",
       "remoteUsername": "ohdsi",
       "settings": {
@@ -112,35 +157,35 @@
         "irDesign": {
           "targetDefs": [
             {
-              "id": 748,
+              "id": 748001,
               "name": "Psoriatic arthritis"
             },
             {
-              "id": 749,
+              "id": 749001,
               "name": "Plaque Psoriasis"
             },
             {
-              "id": 775,
+              "id": 775001,
               "name": "Inflammatory Bowel Disease"
             },
             {
-              "id": 761,
+              "id": 761001,
               "name": "Pulmonary arterial hypertension with Prior Left Heart or Vice Versa"
             },
             {
-              "id": 782,
+              "id": 782001,
               "name": "Chronic Thromboembolic Pulmonary Hypertension"
             },
             {
-              "id": 747,
+              "id": 747001,
               "name": "Pulmonary Arterial Hypertension"
             },
             {
-              "id": 750,
+              "id": 750001,
               "name": "Pulmonary hypertension associated with left heart disease (WHO Group 2)"
             },
             {
-              "id": 751,
+              "id": 751001,
               "name": "Pulmonary hypertension associated with lung diseases and/or hypoxia (WHO Group 3)"
             },
             {
@@ -152,49 +197,49 @@
             {
               "id": 58,
               "name": "Psoriatic arthritis",
-              "cohortId": 748,
+              "cohortId": 748001,
               "cleanWindow": 0
             },
             {
               "id": 59,
               "name": "Plaque Psoriasis",
-              "cohortId": 749,
+              "cohortId": 749001,
               "cleanWindow": 0
             },
             {
               "id": 60,
               "name": "Inflammatory Bowel Disease",
-              "cohortId": 775,
+              "cohortId": 775001,
               "cleanWindow": 0
             },
             {
               "id": 64,
               "name": "Pulmonary arterial hypertension with Prior Left Heart or Vice Versa",
-              "cohortId": 761,
+              "cohortId": 761001,
               "cleanWindow": 0
             },
             {
               "id": 67,
               "name": "Chronic Thromboembolic Pulmonary Hypertension",
-              "cohortId": 782,
+              "cohortId": 782001,
               "cleanWindow": 0
             },
             {
               "id": 72,
               "name": "Pulmonary Arterial Hypertension",
-              "cohortId": 747,
+              "cohortId": 747001,
               "cleanWindow": 0
             },
             {
               "id": 73,
               "name": "Pulmonary hypertension associated with left heart disease (WHO Group 2)",
-              "cohortId": 750,
+              "cohortId": 750001,
               "cleanWindow": 0
             },
             {
               "id": 74,
               "name": "Pulmonary hypertension associated with lung diseases and/or hypoxia (WHO Group 3)",
-              "cohortId": 751,
+              "cohortId": 751001,
               "cleanWindow": 0
             },
             {
@@ -362,22 +407,22 @@
           ],
           "analysisList": [
             {
-              "targets": [748, 749, 775],
+              "targets": [748001, 749001, 775001],
               "outcomes": [55, 56, 57],
               "tars": [2, 3]
             },
             {
-              "targets": 761,
+              "targets": 761001,
               "outcomes": [61, 62, 63],
               "tars": [2, 3]
             },
             {
-              "targets": 782,
+              "targets": 782001,
               "outcomes": [65, 66],
               "tars": [2, 3]
             },
             {
-              "targets": [747, 750, 751, 782],
+              "targets": [747001, 750001, 751001, 782001],
               "outcomes": [68, 69, 70, 71],
               "tars": [2, 3]
             },
@@ -392,6 +437,10 @@
             "byGender": true,
             "byYear": true,
             "ageBreaks": [3, 13, 18, 30, 40, 50, 60, 70, 80, 90]
+          },
+          "studyWindow": {
+            "startDate": "2012-01-01",
+            "endDate": "2022-12-31"
           }
         }
       },

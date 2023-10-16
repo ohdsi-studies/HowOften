@@ -268,13 +268,138 @@
           "cohortDefinition": "{\n\t\"cdmVersionRange\" : \">=5.0.0\",\n\t\"PrimaryCriteria\" : {\n\t\t\"CriteriaList\" : [\n\t\t\t{\n\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\"CodesetId\" : 3,\n\t\t\t\t\t\"ConditionTypeExclude\" : false\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"ObservationWindow\" : {\n\t\t\t\"PriorDays\" : 0,\n\t\t\t\"PostDays\" : 0\n\t\t},\n\t\t\"PrimaryCriteriaLimit\" : {\n\t\t\t\"Type\" : \"All\"\n\t\t}\n\t},\n\t\"ConceptSets\" : [\n\t\t{\n\t\t\t\"id\" : 3,\n\t\t\t\"name\" : \"Pulmonary Embolism FDA concept proxy\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"items\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 254662,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pulmonary infarction\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"64662007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 36713113,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Saddle embolus of pulmonary artery\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"328511000119109\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 440417,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"59282003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : false,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 435616,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Amniotic fluid embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"17263003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 435887,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Antepartum deep vein thrombosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"49956009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 196715,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Budd-Chiari syndrome\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"82385007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4062269,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Cerebral venous thrombosis in pregnancy\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"200259003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 442055,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Obstetric air pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"200286003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 433832,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Obstetric blood-clot pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"200299000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 435026,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Obstetric pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"200284000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 440477,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Obstetric pyemic and septic pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"267284008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 318137,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Phlebitis and thrombophlebitis of intracranial sinuses\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"192753009\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 199837,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Portal vein thrombosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"17920008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 438820,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Postpartum deep phlebothrombosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"56272000\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4235812,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Septic thrombophlebitis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"439731006\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 195294,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Thrombosed hemorrhoids\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"75955007\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 4187790,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Thrombosis of retinal vein\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"46085004\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 444247,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Venous thrombosis\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"111293003\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 44782732,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Chronic pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"133971000119108\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"concept\" : {\n\t\t\t\t\t\t\t\"CONCEPT_ID\" : 40479606,\n\t\t\t\t\t\t\t\"CONCEPT_NAME\" : \"Septic pulmonary embolism\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT\" : \"S\",\n\t\t\t\t\t\t\t\"STANDARD_CONCEPT_CAPTION\" : \"Standard\",\n\t\t\t\t\t\t\t\"INVALID_REASON\" : \"V\",\n\t\t\t\t\t\t\t\"INVALID_REASON_CAPTION\" : \"Valid\",\n\t\t\t\t\t\t\t\"CONCEPT_CODE\" : \"441557008\",\n\t\t\t\t\t\t\t\"DOMAIN_ID\" : \"Condition\",\n\t\t\t\t\t\t\t\"VOCABULARY_ID\" : \"SNOMED\",\n\t\t\t\t\t\t\t\"CONCEPT_CLASS_ID\" : \"Clinical Finding\"\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"isExcluded\" : true,\n\t\t\t\t\t\t\"includeDescendants\" : true,\n\t\t\t\t\t\t\"includeMapped\" : false\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t}\n\t\t}\n\t],\n\t\"QualifiedLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"ExpressionLimit\" : {\n\t\t\"Type\" : \"All\"\n\t},\n\t\"InclusionRules\" : [\n\t\t{\n\t\t\t\"name\" : \"has no events in prior 'clean window' - 365 days\",\n\t\t\t\"expression\" : {\n\t\t\t\t\"Type\" : \"ALL\",\n\t\t\t\t\"CriteriaList\" : [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"Criteria\" : {\n\t\t\t\t\t\t\t\"ConditionOccurrence\" : {\n\t\t\t\t\t\t\t\t\"CodesetId\" : 3,\n\t\t\t\t\t\t\t\t\"ConditionTypeExclude\" : false\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"StartWindow\" : {\n\t\t\t\t\t\t\t\"Start\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 365,\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"End\" : {\n\t\t\t\t\t\t\t\t\"Days\" : 1,\n\t\t\t\t\t\t\t\t\"Coeff\" : -1\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\"UseIndexEnd\" : false,\n\t\t\t\t\t\t\t\"UseEventEnd\" : false\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\"RestrictVisit\" : false,\n\t\t\t\t\t\t\"IgnoreObservationPeriod\" : true,\n\t\t\t\t\t\t\"Occurrence\" : {\n\t\t\t\t\t\t\t\"Type\" : 0,\n\t\t\t\t\t\t\t\"Count\" : 0,\n\t\t\t\t\t\t\t\"IsDistinct\" : false\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"DemographicCriteriaList\" : [],\n\t\t\t\t\"Groups\" : []\n\t\t\t}\n\t\t}\n\t],\n\t\"EndStrategy\" : {\n\t\t\"DateOffset\" : {\n\t\t\t\"DateField\" : \"StartDate\",\n\t\t\t\"Offset\" : 1\n\t\t}\n\t},\n\t\"CensoringCriteria\" : [],\n\t\"CollapseSettings\" : {\n\t\t\"CollapseType\" : \"ERA\",\n\t\t\"EraPad\" : 0\n\t},\n\t\"CensorWindow\" : {}\n}"
         }
       ],
+      "subsetDefs": [
+        "{\n  \"name\": \"\",\n  \"definitionId\": 1,\n  \"subsetOperators\": [\n    {\n      \"name\": \"\",\n      \"subsetType\": \"DemographicSubsetOperator\",\n      \"ageMin\": 0,\n      \"ageMax\": 99,\n      \"gender\": [8507, 8532]\n    },\n    {\n      \"name\": \"\",\n      \"subsetType\": \"LimitSubsetOperator\",\n      \"priorTime\": 365,\n      \"followUpTime\": 0,\n      \"limitTo\": \"all\",\n      \"calendarStartDate\": \"2012-01-01\",\n      \"calendarEndDate\": \"2022-12-31\"\n    }\n  ],\n  \"packageVersion\": \"0.8.1\",\n  \"identifierExpression\": \"targetId * 1000 + definitionId\",\n  \"operatorNameConcatString\": \", \",\n  \"subsetCohortNameTemplate\": \"@baseCohortName\"\n}"
+      ],
+      "cohortSubsets": [
+        {
+          "cohortId": 818001,
+          "subsetId": 1,
+          "targetCohortId": 818
+        },
+        {
+          "cohortId": 824001,
+          "subsetId": 1,
+          "targetCohortId": 824
+        },
+        {
+          "cohortId": 829001,
+          "subsetId": 1,
+          "targetCohortId": 829
+        },
+        {
+          "cohortId": 833001,
+          "subsetId": 1,
+          "targetCohortId": 833
+        },
+        {
+          "cohortId": 838001,
+          "subsetId": 1,
+          "targetCohortId": 838
+        },
+        {
+          "cohortId": 842001,
+          "subsetId": 1,
+          "targetCohortId": 842
+        },
+        {
+          "cohortId": 812001,
+          "subsetId": 1,
+          "targetCohortId": 812
+        },
+        {
+          "cohortId": 821001,
+          "subsetId": 1,
+          "targetCohortId": 821
+        },
+        {
+          "cohortId": 832001,
+          "subsetId": 1,
+          "targetCohortId": 832
+        },
+        {
+          "cohortId": 836001,
+          "subsetId": 1,
+          "targetCohortId": 836
+        },
+        {
+          "cohortId": 839001,
+          "subsetId": 1,
+          "targetCohortId": 839
+        },
+        {
+          "cohortId": 848001,
+          "subsetId": 1,
+          "targetCohortId": 848
+        },
+        {
+          "cohortId": 820001,
+          "subsetId": 1,
+          "targetCohortId": 820
+        },
+        {
+          "cohortId": 823001,
+          "subsetId": 1,
+          "targetCohortId": 823
+        },
+        {
+          "cohortId": 831001,
+          "subsetId": 1,
+          "targetCohortId": 831
+        },
+        {
+          "cohortId": 835001,
+          "subsetId": 1,
+          "targetCohortId": 835
+        },
+        {
+          "cohortId": 840001,
+          "subsetId": 1,
+          "targetCohortId": 840
+        },
+        {
+          "cohortId": 843001,
+          "subsetId": 1,
+          "targetCohortId": 843
+        },
+        {
+          "cohortId": 819001,
+          "subsetId": 1,
+          "targetCohortId": 819
+        },
+        {
+          "cohortId": 822001,
+          "subsetId": 1,
+          "targetCohortId": 822
+        },
+        {
+          "cohortId": 830001,
+          "subsetId": 1,
+          "targetCohortId": 830
+        },
+        {
+          "cohortId": 834001,
+          "subsetId": 1,
+          "targetCohortId": 834
+        },
+        {
+          "cohortId": 841001,
+          "subsetId": 1,
+          "targetCohortId": 841
+        },
+        {
+          "cohortId": 845001,
+          "subsetId": 1,
+          "targetCohortId": 845
+        }
+      ],
       "attr_class": ["CohortDefinitionSharedResources", "SharedResources"]
     }
   ],
   "moduleSpecifications": [
     {
       "module": "CohortGeneratorModule",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "remoteRepo": "github.com",
       "remoteUsername": "ohdsi",
       "settings": {
@@ -292,99 +417,99 @@
         "irDesign": {
           "targetDefs": [
             {
-              "id": 818,
+              "id": 818001,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR"
             },
             {
-              "id": 824,
+              "id": 824001,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR"
             },
             {
-              "id": 829,
+              "id": 829001,
               "name": "Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR"
             },
             {
-              "id": 833,
+              "id": 833001,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR"
             },
             {
-              "id": 838,
+              "id": 838001,
               "name": "Primary adenocarcinoma of rectum MSI-H or dMMR"
             },
             {
-              "id": 842,
+              "id": 842001,
               "name": "Primary adenocarcinoma of rectum, MSI-L, MSI-indeterminate, MSS or pMMR"
             },
             {
-              "id": 812,
+              "id": 812001,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-H or dMMR, no surgery or oncological treatment"
             },
             {
-              "id": 821,
+              "id": 821001,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment"
             },
             {
-              "id": 832,
+              "id": 832001,
               "name": "Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment"
             },
             {
-              "id": 836,
+              "id": 836001,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, no surgery or oncological treatment"
             },
             {
-              "id": 839,
+              "id": 839001,
               "name": "Primary adenocarcinoma of rectum, MSI-H or dMMR, no surgery or oncological treatment"
             },
             {
-              "id": 848,
+              "id": 848001,
               "name": "Primary adenocarcinoma of rectum, no surgery or oncological treatment"
             },
             {
-              "id": 820,
+              "id": 820001,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no curative surgery"
             },
             {
-              "id": 823,
+              "id": 823001,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, oncological treatment no surgery"
             },
             {
-              "id": 831,
+              "id": 831001,
               "name": "Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no surgery"
             },
             {
-              "id": 835,
+              "id": 835001,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, oncological treatment, no surgery"
             },
             {
-              "id": 840,
+              "id": 840001,
               "name": "Primary adenocarcinoma of rectum MSI-H or dMMR, oncological treatment, no surgery"
             },
             {
-              "id": 843,
+              "id": 843001,
               "name": "Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no surgery"
             },
             {
-              "id": 819,
+              "id": 819001,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, treated with curative intended surgery"
             },
             {
-              "id": 822,
+              "id": 822001,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, surgical treatment"
             },
             {
-              "id": 830,
+              "id": 830001,
               "name": "Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR, surgically treated"
             },
             {
-              "id": 834,
+              "id": 834001,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, surgical treatment"
             },
             {
-              "id": 841,
+              "id": 841001,
               "name": "Primary adenocarcinoma of rectum, MSI-H or dMMR, surgical treatment"
             },
             {
-              "id": 845,
+              "id": 845001,
               "name": "Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, treated with potentially curative surgery"
             },
             {
@@ -396,145 +521,145 @@
             {
               "id": 6,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR",
-              "cohortId": 818,
+              "cohortId": 818001,
               "cleanWindow": 0
             },
             {
               "id": 7,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR",
-              "cohortId": 824,
+              "cohortId": 824001,
               "cleanWindow": 0
             },
             {
               "id": 8,
               "name": "Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR",
-              "cohortId": 829,
+              "cohortId": 829001,
               "cleanWindow": 0
             },
             {
               "id": 9,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR",
-              "cohortId": 833,
+              "cohortId": 833001,
               "cleanWindow": 0
             },
             {
               "id": 10,
               "name": "Primary adenocarcinoma of rectum MSI-H or dMMR",
-              "cohortId": 838,
+              "cohortId": 838001,
               "cleanWindow": 0
             },
             {
               "id": 11,
               "name": "Primary adenocarcinoma of rectum, MSI-L, MSI-indeterminate, MSS or pMMR",
-              "cohortId": 842,
+              "cohortId": 842001,
               "cleanWindow": 0
             },
             {
               "id": 13,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-H or dMMR, no surgery or oncological treatment",
-              "cohortId": 812,
+              "cohortId": 812001,
               "cleanWindow": 0
             },
             {
               "id": 14,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment",
-              "cohortId": 821,
+              "cohortId": 821001,
               "cleanWindow": 0
             },
             {
               "id": 15,
               "name": "Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, no surgery or oncological treatment",
-              "cohortId": 832,
+              "cohortId": 832001,
               "cleanWindow": 0
             },
             {
               "id": 16,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, no surgery or oncological treatment",
-              "cohortId": 836,
+              "cohortId": 836001,
               "cleanWindow": 0
             },
             {
               "id": 17,
               "name": "Primary adenocarcinoma of rectum, MSI-H or dMMR, no surgery or oncological treatment",
-              "cohortId": 839,
+              "cohortId": 839001,
               "cleanWindow": 0
             },
             {
               "id": 18,
               "name": "Primary adenocarcinoma of rectum, no surgery or oncological treatment",
-              "cohortId": 848,
+              "cohortId": 848001,
               "cleanWindow": 0
             },
             {
               "id": 19,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no curative surgery",
-              "cohortId": 820,
+              "cohortId": 820001,
               "cleanWindow": 0
             },
             {
               "id": 20,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, oncological treatment no surgery",
-              "cohortId": 823,
+              "cohortId": 823001,
               "cleanWindow": 0
             },
             {
               "id": 21,
               "name": "Primary adenocarcinoma of colon MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no surgery",
-              "cohortId": 831,
+              "cohortId": 831001,
               "cleanWindow": 0
             },
             {
               "id": 22,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, oncological treatment, no surgery",
-              "cohortId": 835,
+              "cohortId": 835001,
               "cleanWindow": 0
             },
             {
               "id": 23,
               "name": "Primary adenocarcinoma of rectum MSI-H or dMMR, oncological treatment, no surgery",
-              "cohortId": 840,
+              "cohortId": 840001,
               "cleanWindow": 0
             },
             {
               "id": 24,
               "name": "Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, oncological treatment, no surgery",
-              "cohortId": 843,
+              "cohortId": 843001,
               "cleanWindow": 0
             },
             {
               "id": 49,
               "name": "Primary adenocarcinoma of the colon or rectum, MSI-L, MSI-indeterminate, MSS or pMMR, treated with curative intended surgery",
-              "cohortId": 819,
+              "cohortId": 819001,
               "cleanWindow": 0
             },
             {
               "id": 50,
               "name": "Primary adenocarcinoma of colon or rectum, MSI-H or dMMR, surgical treatment",
-              "cohortId": 822,
+              "cohortId": 822001,
               "cleanWindow": 0
             },
             {
               "id": 51,
               "name": "Primary adenocarcinoma of colon, MSI-L, MSI-indeterminate, MSS or pMMR, surgically treated",
-              "cohortId": 830,
+              "cohortId": 830001,
               "cleanWindow": 0
             },
             {
               "id": 52,
               "name": "Primary adenocarcinoma of colon MSI-H or dMMR, surgical treatment",
-              "cohortId": 834,
+              "cohortId": 834001,
               "cleanWindow": 0
             },
             {
               "id": 53,
               "name": "Primary adenocarcinoma of rectum, MSI-H or dMMR, surgical treatment",
-              "cohortId": 841,
+              "cohortId": 841001,
               "cleanWindow": 0
             },
             {
               "id": 54,
               "name": "Primary adenocarcinoma of rectum MSI-L, MSI-indeterminate, MSS or pMMR, treated with potentially curative surgery",
-              "cohortId": 845,
+              "cohortId": 845001,
               "cleanWindow": 0
             },
             {
@@ -798,22 +923,22 @@
           ],
           "analysisList": [
             {
-              "targets": [818, 824, 829, 833, 838, 842],
+              "targets": [818001, 824001, 829001, 833001, 838001, 842001],
               "outcomes": [3, 4, 5],
               "tars": [1, 2, 3]
             },
             {
-              "targets": [812, 821, 832, 836, 839, 848],
+              "targets": [812001, 821001, 832001, 836001, 839001, 848001],
               "outcomes": 12,
               "tars": [1, 2]
             },
             {
-              "targets": [820, 823, 831, 835, 840, 843],
+              "targets": [820001, 823001, 831001, 835001, 840001, 843001],
               "outcomes": 12,
               "tars": [1, 2]
             },
             {
-              "targets": [819, 822, 830, 834, 841, 845],
+              "targets": [819001, 822001, 830001, 834001, 841001, 845001],
               "outcomes": [25, 26, 27, 28, 29, 30, 3, 5, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
               "tars": [1, 2, 3]
             },
@@ -828,6 +953,10 @@
             "byGender": true,
             "byYear": true,
             "ageBreaks": [3, 13, 18, 30, 40, 50, 60, 70, 80, 90]
+          },
+          "studyWindow": {
+            "startDate": "2012-01-01",
+            "endDate": "2022-12-31"
           }
         }
       },

@@ -1,13 +1,10 @@
-remotes::install_github(repo = "OHDSI/PhenotypeLibrary", ref = "v3.25.0")
+remotes::install_github(repo = "OHDSI/PhenotypeLibrary", ref = "v3.29.0")
 
 
+notPartOfV325 <- c(1120, 1128, 1129, 1130, 1131, 1132, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1117, 1118, 1119, 1216, 1217, 1218, 1219, 1220, 1221, 1222)
 # Step 1: get all cohort definition in OHDSI PhenotypeLibrary ----
-fullPhenotypeLog <- PhenotypeLibrary::getPhenotypeLog() |>
-  dplyr::filter(stringr::str_detect(
-    string = cohortNameAtlas,
-    pattern = stringr::fixed("[D]"),
-    negate = TRUE
-  ))
+fullPhenotypeLog <- PhenotypeLibrary::getPhenotypeLog() |> 
+  dplyr::filter(!cohortId %in% notPartOfV325)
 
 # any overides
 cohortsThatShouldBeRemovedBecauseTheySeemToCauseProblems <- c(344)
@@ -23,7 +20,7 @@ setdiff(cohortsThatArePartOfAnlalysis2,
 intersect(cohortsThatArePartOfAnlalysis2, 
         fullPhenotypeLog$cohortId) |> length() == length(cohortsThatArePartOfAnlalysis2)
 
-cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenotype library as of v3.25.0 so wont matter
+cohortsThatAreDuplicates <- c(794,	1077, #decided to remove
                               900, 726, #anaphylaxis replaced with 1076
                               986, 730, # pancreatitis using 251
                               1086, 692, 691, 296, 63, # duplicates of transverse myelitis
@@ -42,21 +39,17 @@ cohortsThatAreDuplicates <- c(771, 772, 993, 997,794,	1077, #withdrawn in phenot
                               256, #Bells palsy
                               935, #Hemorrhagic stroke
                               979, #Heart failure
-                              850, #IBD
                               944, # ischemic stroke
                               215,216, #ITP
                               239, #narcolepsy
                               1000, #nausea
                               737, #febrile neutropenia
-                              1001, # peripheral edema
                               919, #cardiac arrhythmia
                               927, #dementia
                               947, #neutropenia
                               957, #Type 2 DM
-                              740, #pulmonary arterial hypertension
                               950, #rhabdomyolysis
-                              277, #sudden hearing loss
-                              217 #TMA
+                              277 #sudden hearing loss
                               )
 
 setdiff(cohortsThatAreDuplicates,

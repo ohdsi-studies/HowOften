@@ -1,13 +1,14 @@
 # install the network package
 # install.packages('remotes')
-# remotes::install_github("OHDSI/Strategus", ref="develop")
+# remotes::install_github("OHDSI/Strategus")
+
 library(Strategus)
 
 ##=========== START OF INPUTS ==========
 keyringName <- "HowOften"
-connectionDetailsReference <- "optum_dod"
+connectionDetailsReference <- "optum_extended_ses"
 workDatabaseSchema <- 'scratch_cknoll1'
-cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+cdmDatabaseSchema <- 'cdm_optum_extended_ses_v2559'
 outputLocation <- 'D:/projects/HowOften/Strategus'
 resultsLocation <- 'D:/projects/HowOften/Results'
 minCellCount <- 5
