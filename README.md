@@ -1,5 +1,4 @@
 ## How Often: An Incidence Analysis for a series of OHDSI Community Submissions
-=================
 
 <img src="https://img.shields.io/badge/Study%20Status-Design%20Finalized-brightgreen.svg" alt="Study Status: Design Finalized">
 
@@ -15,18 +14,15 @@
 - Results explorer: **[ShinyApp Explorer](https://results.ohdsi.org/)**
 
 ## Overview
-=================
 
 How Often is a Characterization project (Incidence Rate) with Clinical Application implications to answer questions in the form of 'How Often does outcome X occur among Patients in Y, where Patients in Y could either be a specific sub-popuation of a CDM, or a background population between 2012 and 2022.
 
 ## Getting Started
-=================
 
 There are 3 parts to executing the study:  Pre-Configuration (to get base R libraries set up), Keyring Setup and finally Analysis Execution.
 
 
 ### Pre-Configuration
-=================
 
 HowOften requires:
 
@@ -37,7 +33,6 @@ HowOften requires:
 DatabaseConnector may have challenges to updating if already installed as a Package. Either update the package in a R CLI (outside of RStudio) or use `unloadNamespace()` to remove DatabaseConnector from memory.
 
 ### Keyring Setup
-=================
 
 This repository provides a [keyringSetup.R](keyringSetup.R) script that provides initialization scripts to set up your R environment and register connection details as `connection refs` for use in Strategus.
 
@@ -105,7 +100,6 @@ Strategus::storeConnectionDetails(
 ```
 
 ### Executing the Analysis
-=================
 
 The [StrategusCodeToRun.R](StrategusCodeToRun.R) contains the script that will perform the exeuction of the 7 individual analyes in HowOften:
 
@@ -198,7 +192,6 @@ executeAnalysis("howoften_george.json", executionSettings, "george", outputLocat
 ```
 
 ### Submitting Results
-=================
 
 Once the analyses executions are complete (not all are required to be completed, some analyses are very large and may not be completed in time for the OHDSI Symposium), the Results folder is zipped and submitted to an FTP location for processing.  Results that are properlly submitted and formatted will be uploaded to OHDSI servers and will be available on [results.ohdsi.org](https://results.ohdsi.org/)
 
