@@ -33,29 +33,14 @@ DatabaseConnector::disconnect(conn)
 # DO NOT MODIFY BELOW THIS POINT
 ##################################
 keyringName <- "HowOften"
-keyringPassword <- Sys.getenv("STRATEGUS_KEYRING_PASSWORD") # This password is simply to avoid a prompt when creating the keyring
 
 # Create the keyring if it does not exist.
-# If it exists, clear it out so we can re-load the keys
 allKeyrings <- keyring::keyring_list()
-if (keyringName %in% allKeyrings$keyring) {
-  if (keyring::keyring_is_locked(keyring = keyringName)) {
-    keyring::keyring_unlock(keyring = keyringName, password = keyringPassword)
-  }
-  # Delete all keys from the keyring so we can delete it
-  message(paste0("Delete existing keyring: ", keyringName))
-  keys <- keyring::key_list(keyring = keyringName)
-  if (nrow(keys) > 0) {
-    for (i in 1:nrow(keys)) {
-      keyring::key_delete(keys$service[i], keyring = keyringName)
-    }
-  }
-  keyring::keyring_delete(keyring = keyringName)
+if (!(keyringName %in% allKeyrings$keyring)) {
+  keyring::keyring_create(keyring = keyringName, password = Sys.getenv("STRATEGUS_KEYRING_PASSWORD"))
+} else {
+  stop("Keyring already exists. You do not need to create it again.")
 }
-keyring::keyring_create(keyring = keyringName, password = keyringPassword)
-
-# Create the keyring using the password from Sys.getenv("STRATEGUS_KEYRING_PASSWORD")
-keyring::keyring_create(keyring = keyringName, password = Sys.getenv("STRATEGUS_KEYRING_PASSWORD"))
 
 # excecute this for each connectionDetails/ConnectionDetailsReference you are going to use
 Strategus::storeConnectionDetails(
