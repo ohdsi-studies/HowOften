@@ -9,7 +9,7 @@
 - Study lead forums tag: **[hripcsa](https://forums.ohdsi.org/u/hripcsa)**
 - Study start date: **August 2023**
 - Study end date: **-**
-- Protocol: **[HowOften Study Protocol](documents/HowOften protocol v1.0.pdf)**
+- Protocol: [HowOften Study Protocol](https://github.com/ohdsi-studies/HowOften/blob/master/Documents/HowOften%20protocol%20v1.0.pdf)
 - Publications: **None**
 - Results explorer: **[ShinyApp Explorer](https://results.ohdsi.org/)**
 
