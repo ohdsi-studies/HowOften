@@ -15,7 +15,7 @@
 
 ## Overview
 
-How Often is a Characterization project (Incidence Rate) with Clinical Application implications to answer questions in the form of 'How Often does outcome X occur among Patients in Y, where Patients in Y could either be a specific sub-popuation of a CDM, or a background population between 2012 and 2022.
+How Often is a Large-Scale Characterization analysis to compute incidence for a broad collection of target populations and outcomes across the OHDSI network.  Incidence analyses can be framed as: "Amongst patients who are *insert your favorite target cohort i*, how many patients experienced *insert your favorite outcome j* within *time horizon relative to target start*?", and HowOften aims to systematically apply this analysis to range of target cohorts, outcome cohorts, and time horizons, to address an array of clinical questions that incidence evidence can inform. 
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ There are 3 parts to executing the study:  Pre-Configuration (to get base R libr
 
 HowOften requires:
 
-- R v4.2 (Perferably 4.2.3)
+- R v4.2 (Preferably 4.2.3)
 - DatabaseConnector >= 6.2.3
 - Strategus v0.1.0
 
@@ -88,7 +88,7 @@ if (!(keyringName %in% allKeyrings$keyring)) {
 }
 ```
 
-**Part 4** will store your connectiond details into your keyring:
+**Part 4** will store your connection details into your keyring:
 
 ```
 # excecute this for each connectionDetails/ConnectionDetailsReference you are going to use
@@ -101,7 +101,7 @@ Strategus::storeConnectionDetails(
 
 ### Executing the Analysis
 
-The [StrategusCodeToRun.R](StrategusCodeToRun.R) contains the script that will perform the exeuction of the 7 individual analyes in HowOften:
+The [StrategusCodeToRun.R](StrategusCodeToRun.R) contains the script that will perform the execution of the 7 individual analyes in HowOften:
 
 **Part 1** sets up variables that will be used as input to execution:
 
