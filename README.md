@@ -5,8 +5,8 @@
 - Analytics use case(s): **Characterization**
 - Study type: **Clinical Application**
 - Tags: **Incidence**
-- Study lead: **Gowtham Rao**
-- Study lead forums tag: **[gowtham_rao](https://forums.ohdsi.org/u/gowtham_rao)**
+- Study lead: **George Hripcsak**
+- Study lead forums tag: **[hripcsa](https://forums.ohdsi.org/u/hripcsa)**
 - Study start date: **August 2023**
 - Study end date: **-**
 - Protocol: **[HowOften Study Protocol](documents/HowOften protocol v1.0.pdf)**
