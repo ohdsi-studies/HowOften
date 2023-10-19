@@ -29,8 +29,17 @@ HowOften requires:
 - R v4.2 (Preferably 4.2.3)
 - DatabaseConnector >= 6.2.3
 - Strategus v0.1.0
+- Cohortgenerator v0.8.1
 
-DatabaseConnector may have challenges to updating if already installed as a Package. Either update the package in a R CLI (outside of RStudio) or use `unloadNamespace()` to remove DatabaseConnector from memory.
+DatabaseConnector may have challenges to updating if already installed as a Package. Either update the package in a R CLI (outside of RStudio) or use `unloadNamespace()` to remove DatabaseConnector from memory.  Execute the following to install these packages:
+
+```
+
+install.packages("DatabaseConnector")
+remotes::install_github("OHGDI/Strategus", ref="v0.1.0")
+remotes::install_github("OHGDI/CohortGenerator", ref="v0.8.1")
+
+```
 
 ### Keyring Setup
 
@@ -76,6 +85,8 @@ DatabaseConnector::disconnect(conn)
 
 In the above, you will assign connectionDetails in your r environment through your own script.
 
+**Please change the value of `myDatasourceKey` to a short, meaningful label for this cdm source.**
+
 **Part 3** is to create your Keyring if it does not exist:
 
 ```
@@ -118,6 +129,8 @@ cohortTableName <- "howoften_cohort"
 ```
 
 Note: the outputLocation will be reused between analysis exeuctions to cache cohort generation info.   Each analysis execution will copy from the `outputLocation` to the `resultsLocation` under the directory dedicated to the individual studies.  The `resultsLocation` folder will be zipped and submitted for inclusion in the ShinyApp viewer.
+
+**Please change the value of `myDatasourceKey` to a short, meaningful label for this cdm source.  This must be the same value that was use dwhen executing SetupKeyring.R**
 
 **Part 2** sets up execution settings and creates the helper function to execute the analysis and copy results to the result folder:
 
