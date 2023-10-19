@@ -1,0 +1,99 @@
+table_name,column_name,data_type,is_required,primary_key,empty_is_na,min_cell_count,description
+c_time_to_event,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_time_to_event,target_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the target cohort
+c_time_to_event,outcome_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the outcome cohort
+c_time_to_event,outcome_type,varchar(100),Y,Y,N,N,Is the outvome a first occurrence or repeat
+c_time_to_event,target_outcome_type,varchar(40),Y,Y,N,N,When does the outcome occur relative to target
+c_time_to_event,time_to_event,int,Y,N,N,N,The time (in days) from target index to outcome start
+c_time_to_event,num_events,int,Y,N,N,N,Number of events that occur during the specified time to event
+c_time_to_event,time_scale,varchar(20),Y,N,N,N,time scale for the number of events
+c_rechallenge_fail_case_series,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_rechallenge_fail_case_series,dechallenge_stop_interval,int,Y,N,N,N,The time period that É
+c_rechallenge_fail_case_series,dechallenge_evaluation_window,int,Y,N,N,N,The time period that É
+c_rechallenge_fail_case_series,target_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the target cohort
+c_rechallenge_fail_case_series,outcome_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the outcome cohort
+c_rechallenge_fail_case_series,person_key,int,Y,Y,N,N,The dense rank for the patient (an identifier that is not the same as the database)
+c_rechallenge_fail_case_series,subject_id,bigint,Y,N,N,N,The person identifier for the failed case series (optional)
+c_rechallenge_fail_case_series,dechallenge_exposure_number,int,Y,N,N,N,The number of times a dechallenge has occurred
+c_rechallenge_fail_case_series,dechallenge_exposure_start_date_offset,int,Y,N,N,N,The offset for the dechallenge start (number of days after index)
+c_rechallenge_fail_case_series,dechallenge_exposure_end_date_offset,int,Y,N,N,N,The offset for the dechallenge end (number of days after index)
+c_rechallenge_fail_case_series,dechallenge_outcome_number,int,Y,N,N,N,The number of times an outcome has occurred during the dechallenge
+c_rechallenge_fail_case_series,dechallenge_outcome_start_date_offset,int,Y,N,N,N,The offset for the outcome start (number of days after index)
+c_rechallenge_fail_case_series,rechallenge_exposure_number,int,Y,N,N,N,The number of times a rechallenge exposure has occurred
+c_rechallenge_fail_case_series,rechallenge_exposure_start_date_offset,int,Y,N,N,N,The offset for the rechallenge start (number of days after index)
+c_rechallenge_fail_case_series,rechallenge_exposure_end_date_offset,int,Y,N,N,N,The offset for the rechallenge end (number of days after index)
+c_rechallenge_fail_case_series,rechallenge_outcome_number,int,Y,N,N,N,The number of times the outcome has occurred during the rechallenge
+c_rechallenge_fail_case_series,rechallenge_outcome_start_date_offset,int,Y,N,N,N,The offset for the outcome start (number of days after index)
+c_dechallenge_rechallenge,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_dechallenge_rechallenge,dechallenge_stop_interval,int,Y,Y,N,N,The dechallenge stop interval
+c_dechallenge_rechallenge,dechallenge_evaluation_window,int,Y,Y,N,N,The dechallenge evaluation window
+c_dechallenge_rechallenge,target_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the target cohort
+c_dechallenge_rechallenge,outcome_cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id for the outcome cohort
+c_dechallenge_rechallenge,num_exposure_eras,int,Y,N,N,N,The number of exposure eras
+c_dechallenge_rechallenge,num_persons_exposed,int,Y,N,N,N,The number of persons exposed
+c_dechallenge_rechallenge,num_cases,int,Y,N,N,N,The number of cases
+c_dechallenge_rechallenge,dechallenge_attempt,int,Y,N,N,N,The number of dechallenge attempts
+c_dechallenge_rechallenge,dechallenge_fail,int,Y,N,N,N,The dechallenge fail count
+c_dechallenge_rechallenge,dechallenge_success,int,Y,N,N,N,The dechallenge success count
+c_dechallenge_rechallenge,rechallenge_attempt,int,Y,N,N,N,The rechallenge attempt count
+c_dechallenge_rechallenge,rechallenge_fail,int,Y,N,N,N,The rechallenge fail count
+c_dechallenge_rechallenge,rechallenge_success,int,Y,N,N,N,The rechallenge success count
+c_dechallenge_rechallenge,pct_dechallenge_attempt,float,Y,N,N,N,The percentage of dechallenge attempts
+c_dechallenge_rechallenge,pct_dechallenge_success,float,Y,N,N,N,The percentage of dechallenge success
+c_dechallenge_rechallenge,pct_dechallenge_fail,float,Y,N,N,N,The percentage of dechallenge fails
+c_dechallenge_rechallenge,pct_rechallenge_attempt,float,Y,N,N,N,The percentage of rechallenge attempts
+c_dechallenge_rechallenge,pct_rechallenge_success,float,Y,N,N,N,The percentage of rechallenge success
+c_dechallenge_rechallenge,pct_rechallenge_fail,float,Y,N,N,N,The percentage of rechallenge fails
+c_analysis_ref,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_analysis_ref,run_id,int,Y,Y,N,N,The run identifier
+c_analysis_ref,analysis_id,int,Y,Y,N,N,The analysis identifier
+c_analysis_ref,analysis_name,varchar,Y,N,N,N,The analysis name
+c_analysis_ref,domain_id,varchar,Y,N,N,N,The domain id
+c_analysis_ref,start_day,int,Y,N,N,N,The start day
+c_analysis_ref,end_day,int,Y,N,N,N,The end day
+c_analysis_ref,is_binary,varchar(1),Y,N,N,N,Is this a binary analysis
+c_analysis_ref,missing_means_zero,varchar(1),Y,N,N,N,Missing means zero
+c_covariate_ref,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_covariate_ref,run_id,int,Y,Y,N,N,The run identifier
+c_covariate_ref,covariate_id,bigint,Y,Y,N,N,The covariate identifier
+c_covariate_ref,covariate_name,varchar,Y,N,N,N,The covariate name
+c_covariate_ref,analysis_id,int,Y,N,N,N,The analysis identifier
+c_covariate_ref,concept_id,bigint,Y,N,N,N,The concept identifier
+c_covariates,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_covariates,run_id,int,Y,Y,N,N,The run identifier
+c_covariates,cohort_definition_id,int,Y,Y,N,N,The cohort definition id
+c_covariates,covariate_id,bigint,Y,Y,N,N,The covaraite id
+c_covariates,sum_value,int,Y,N,N,N,The sum value
+c_covariates,average_value,float,Y,N,N,N,The average value
+c_covariates_continuous,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_covariates_continuous,run_id,int,Y,Y,N,N,The run identifier
+c_covariates_continuous,cohort_definition_id,bigint,Y,Y,N,N,The cohort definition id
+c_covariates_continuous,covariate_id,int,Y,Y,N,N,The covariate identifier
+c_covariates_continuous,count_value,int,Y,N,N,N,The count value
+c_covariates_continuous,min_value,float,Y,N,N,N,The min value
+c_covariates_continuous,max_value,float,Y,N,N,N,The max value
+c_covariates_continuous,average_value,float,Y,N,N,N,The average value
+c_covariates_continuous,standard_deviation,float,Y,N,N,N,The standard devidation
+c_covariates_continuous,median_value,float,Y,N,N,N,The median value
+c_covariates_continuous,p_10_value,float,Y,N,N,N,The 10th percentile
+c_covariates_continuous,p_25_value,float,Y,N,N,N,The 25th percentile
+c_covariates_continuous,p_75_value,float,Y,N,N,N,The 75th percentile
+c_covariates_continuous,p_90_value,float,Y,N,N,N,The 90th percentile
+c_settings,run_id,int,Y,Y,N,N,The run identifier
+c_settings,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_settings,covariate_setting_json,varchar,Y,N,N,N,The covariate settings JSON
+c_settings,risk_window_start,int,Y,N,N,N,The risk window start
+c_settings,risk_window_end,int,Y,N,N,N,The risk window end
+c_settings,start_anchor,varchar(15),Y,N,N,N,The start anchor
+c_settings,end_anchor,varchar(15),Y,N,N,N,The end anchor
+c_cohort_details,run_id,int,Y,Y,N,N,The run identifier
+c_cohort_details,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_cohort_details,cohort_definition_id,int,Y,N,N,N,The study cohort id
+c_cohort_details,cohort_type,varchar(10),Y,N,N,N,The cohort type
+c_cohort_details,target_cohort_id,int,Y,N,N,N,The target cohort id
+c_cohort_details,outcome_cohort_id,int,Y,N,N,N,The outcome cohort id
+c_cohort_counts,run_id,int,Y,Y,N,N,The run identifier
+c_cohort_counts,database_id,varchar(100),Y,Y,N,N,The database identifier
+c_cohort_counts,cohort_definition_id,int,Y,N,N,N,The study cohort id
+c_cohort_counts,row_count,int,Y,N,N,N,The number of rows in each cohort
+c_cohort_counts,person_count,int,Y,N,N,N,The number of distinct people in each cohort
