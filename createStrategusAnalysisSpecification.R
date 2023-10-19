@@ -39,7 +39,7 @@ overallFileName <- "howoften_overall.json"
 georgeFileList <- c(file.path("analysis_specifications","analysis3.xlsx"))
 georgeFileName <- "howoften_george.json"
 
-allFileList <- c(azzaFileList, andreasFileList, joelFileList, evanFileList, gowzaFileList, overallFileList)
+allFileList <- c(azzaFileList, andreasFileList, joelFileList, evanFileList, gowzaFileList, overallFileList,georgeFileList)
 
 # we want outcomeIds to be the same across analyses (by cohortId, clean window)
 # so we will process all outcomes together and assign a unique ID.
