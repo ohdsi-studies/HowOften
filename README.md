@@ -36,8 +36,8 @@ DatabaseConnector may have challenges to updating if already installed as a Pack
 ```
 
 install.packages("DatabaseConnector")
-remotes::install_github("OHGDI/Strategus", ref="v0.1.0")
-remotes::install_github("OHGDI/CohortGenerator", ref="v0.8.1")
+remotes::install_github("OHDSI/Strategus", ref="v0.1.0")
+remotes::install_github("OHDSI/CohortGenerator", ref="v0.8.1")
 
 ```
 
