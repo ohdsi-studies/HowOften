@@ -23,6 +23,7 @@ andreasFileName <- "howoften_andreas.json"
 joelFileList <- c(file.path("analysis_specifications","analysis2_joel_1.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_2.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_3.xlsx"),
+                     file.path("analysis_specifications","analysis2_joel_4.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_4.xlsx"))
 joelFileName <- "howoften_joel.json"
 
