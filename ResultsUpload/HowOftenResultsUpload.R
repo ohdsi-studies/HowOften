@@ -26,7 +26,7 @@
 #    individual <StrategusModule> folder.
 
 # Set this to root of the results
-resultsFolderRoot <- "E:/HowOften/2023_10_15_HowOften_Results"
+resultsFolderRoot <- 'D:/projects/HowOften'
 
 # Set this to c() if not using the analysis filtering.
 # This will then upload all analyses results found in each
@@ -45,9 +45,18 @@ howOftenAnalysesFilterList <- c(
 # This will then upload all database results found 
 # in each analysis directory
 databaseFilterList <- c(
-  "truven_ccae",
-  "truven_mdcd",
-  "truven_mdcr"
+  # "truven_ccae",
+  # "truven_mdcd",
+  # "truven_mdcr",
+  # "iqvia_pharmetrics_plus",
+  # "optum_extended_ses",
+  # "optum_ehr",
+  # "iqvia_amb_emr",
+  # "CUIMC OMOP 2023q3r1",
+  # "ims_australia_lpd",
+  # "ims_france",
+  # "ims_germany",
+  # "jmdc"
 )
 
 # Traverse results to obtain list of results for upload ------------------------
@@ -136,6 +145,21 @@ isModuleComplete <- function(moduleFolder) {
   isDatabaseMetaDataFolder <- basename(moduleFolder) == "DatabaseMetaData"
   return(doneFileFound || isDatabaseMetaDataFolder)
 }
+
+deletePriorCIResults <- function(con, schemaName, databaseId) {
+  message("- Removing CI Results from ", schemaName, " for databaseId [", databaseId, "]")
+  sql <- "DELETE FROM @schema.ci_incidence_summary WHERE database_id = '@database_id'"
+  DatabaseConnector::renderTranslateExecuteSql(
+    connection = con,
+    sql = sql,
+    schema = schemaName,
+    database_id = databaseId,
+    progressBar = FALSE,
+    reportOverallTime = FALSE
+  )
+  
+}
+
 # Setup logging ----------------------------------------------------------------
 ParallelLogger::clearLoggers()
 ParallelLogger::addDefaultFileLogger(
@@ -163,6 +187,14 @@ tryCatch({
         if (!file.exists(rdmsFile)) {
           stop("resultsDataModelSpecification.csv not found in ", resumoduleFolderltsFolder)
         } else {
+          if (grepl("CohortIncidence", moduleName)) {
+            #read DB ID
+            databaseMeta <- CohortGenerator::readCsv(file=file.path(
+              resultFolder$strategusResultsFolder,
+              "DatabaseMetaData/database_meta_data.csv"))
+            databaseId <- databaseMeta$databaseId
+            deletePriorCIResults(connection, resultsDatabaseSchema, databaseId = databaseId)
+          }
           specification <- CohortGenerator::readCsv(file = rdmsFile)
           runCheckAndFixCommands = grepl("CohortDiagnostics", moduleName)
           ResultModelManager::uploadResults(

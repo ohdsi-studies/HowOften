@@ -24,7 +24,7 @@ joelFileList <- c(file.path("analysis_specifications","analysis2_joel_1.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_2.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_3.xlsx"),
                      file.path("analysis_specifications","analysis2_joel_4.xlsx"),
-                     file.path("analysis_specifications","analysis2_joel_4.xlsx"))
+                     file.path("analysis_specifications","analysis2_joel_5.xlsx"))
 joelFileName <- "howoften_joel.json"
 
 evanFileList <- c(file.path("analysis_specifications","analysis2_evan_1.xlsx"),
