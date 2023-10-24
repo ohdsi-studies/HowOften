@@ -1,0 +1,174 @@
+---
+title: "Strategus Setup Guide"
+subtitle : "Lost in config land"
+date: "2023-10-21"
+format:
+  revealjs:
+    theme: default
+    logo: https://www.ohdsi.org/web/wiki/lib/exe/fetch.php?w=100&tok=44f68f&media=t-ohdsi-logo-only.png
+    css: logo.css
+    footer: "Strategus Setup Guide"
+---
+
+## `keyringSetup.R`/`keyringSetupCli.R`
+
+Running this file is for setting up secret credentials that are used for your CDM.
+
+```{r eval = FALSE, echo=TRUE}
+source('keyringSetup.R')
+```
+
+:::{.incremental}
+- Set `STRATEGUS_KEYRING_PASSWORD` environmental variable
+- Set `INSTANTIATED_MODULES_FOLDER` environmental variable
+- Create and securely save database connection details for your CDM
+:::
+
+
+
+## `StrategusCodeToRun.R`
+Edit the top of this file before you begin:
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 7-18
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
+
+## `StrategusCodeToRun.R`
+The keyring name will be used for this project. 
+
+Make sure its set to the value in the previous script
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 7
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
+
+## `StrategusCodeToRun.R`
+These cdm schema settings are where the data will live.
+The `workDatabaseSchema` must be writable
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 9-10
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
+
+## `StrategusCodeToRun.R`
+
+These output and results locations should be different, writable directories.
+Make sure you have enough disk space
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 11-12
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
+
+
+
+## `StrategusCodeToRun.R`
+
+Make sure that your `minCellCount` complies with your governance on the minimum number for identify patients.
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 13
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
+
+## `StrategusCodeToRun.R`
+
+Your cohort table should be unique - this will be overwritten
+
+```{r eval = FALSE, echo=TRUE}
+#| code-line-numbers: 14
+# install the network package
+# install.packages('remotes')
+# remotes::install_github("OHDSI/Strategus", ref="develop")
+library(Strategus)
+
+##=========== START OF INPUTS ==========
+keyringName <- "HowOften"
+connectionDetailsReference <- "optum_dod"
+workDatabaseSchema <- 'scratch_cknoll1'
+cdmDatabaseSchema <- 'cdm_optum_extended_dod_v2434'
+outputLocation <- 'D:/projects/HowOften/Strategus'
+resultsLocation <- 'D:/projects/HowOften/Results'
+minCellCount <- 5
+cohortTableName <- "howoften_cohort"
+
+....
+```
