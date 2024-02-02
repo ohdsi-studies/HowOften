@@ -1,4 +1,5 @@
-## How Often: An Incidence Analysis for a series of OHDSI Community Submissions
+How Often: An Incidence Analysis for a series of OHDSI Community Submissions
+============================================================================
 
 <img src="https://img.shields.io/badge/Study%20Status-Design%20Finalized-brightgreen.svg" alt="Study Status: Design Finalized">
 
@@ -12,8 +13,6 @@
 - Protocol: [HowOften Study Protocol](https://github.com/ohdsi-studies/HowOften/blob/master/Documents/HowOften%20protocol%20v1.0.pdf)
 - Publications: **None**
 - Results explorer: **[ShinyApp Explorer](https://results.ohdsi.org/)**
-
-## Overview
 
 How Often is a Large-Scale Characterization analysis to compute incidence for a broad collection of target populations and outcomes across the OHDSI network.  Incidence analyses can be framed as: "Amongst patients who are *insert your favorite target cohort i*, how many patients experienced *insert your favorite outcome j* within *time horizon relative to target start*?", and HowOften aims to systematically apply this analysis to range of target cohorts, outcome cohorts, and time horizons, to address an array of clinical questions that incidence evidence can inform. 
 
