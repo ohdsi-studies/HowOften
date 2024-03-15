@@ -45,7 +45,7 @@
     },
     {
       "module": "CohortIncidenceModule",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "remoteRepo": "github.com",
       "remoteUsername": "ohdsi",
       "settings": {
@@ -162,6 +162,17 @@
                 "dateField": "start",
                 "offset": 730
               }
+            },
+            {
+              "id": 9,
+              "start": {
+                "dateField": "start",
+                "offset": 1
+              },
+              "end": {
+                "dateField": "start",
+                "offset": 364
+              }
             }
           ],
           "analysisList": [
@@ -173,7 +184,7 @@
             {
               "targets": 1071,
               "outcomes": [2, 1],
-              "tars": 2
+              "tars": 9
             }
           ],
           "strataSettings": {

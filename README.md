@@ -206,5 +206,7 @@ executeAnalysis("howoften_george.json", executionSettings, "george", outputLocat
 
 ### Submitting Results
 
-Once the analyses executions are complete (not all are required to be completed, some analyses are very large and may not be completed in time for the OHDSI Symposium), the Results folder is zipped and submitted to an FTP location for processing.  Results that are properlly submitted and formatted will be uploaded to OHDSI servers and will be available on [results.ohdsi.org](https://results.ohdsi.org/)
+Once the analyses executions are complete (not all are required to be completed, some analyses are very large and may not be completed in time for the OHDSI Symposium), the Results folder is zipped and submitted for processing.  Results that are properlly submitted and formatted will be uploaded to OHDSI servers and will be available on [results.ohdsi.org](https://results.ohdsi.org/).  
+
+Contact cknoll@ohdsi.org for instructions on submitting.
 

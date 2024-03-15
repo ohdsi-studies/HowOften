@@ -63,7 +63,7 @@ outcomeMap <-outcomeMap %>% distinct() %>% dplyr::mutate(id=dplyr::row_number())
 # CohortGeneratorModule --------------------------------------------------------
 source("https://raw.githubusercontent.com/OHDSI/CohortGeneratorModule/v0.2.1/SettingsFunctions.R")
 # CohortIncidenceModule --------------------------------------------------------
-source("https://raw.githubusercontent.com/OHDSI/CohortIncidenceModule/v0.2.0/SettingsFunctions.R")
+source("https://raw.githubusercontent.com/OHDSI/CohortIncidenceModule/v0.3.0/SettingsFunctions.R")
 
 # define unique set of TARS
 tars <- list(CohortIncidence::createTimeAtRiskDef(id=1, startWith="start", startOffset = 1, endWith="start", endOffset = 30),
@@ -73,7 +73,9 @@ tars <- list(CohortIncidence::createTimeAtRiskDef(id=1, startWith="start", start
              CohortIncidence::createTimeAtRiskDef(id=5, startWith="start", startOffset = 1, endWith="start", endOffset = 14), # evan tar
              CohortIncidence::createTimeAtRiskDef(id=6, startWith="start", startOffset = 1, endWith="start", endOffset = 60), # evan tar
              CohortIncidence::createTimeAtRiskDef(id=7, startWith="start", startOffset = 31, endWith="start", endOffset = 365), # evan tar
-             CohortIncidence::createTimeAtRiskDef(id=8, startWith="start", startOffset = 366, endWith="start", endOffset = 730)) # evan tar
+             CohortIncidence::createTimeAtRiskDef(id=8, startWith="start", startOffset = 366, endWith="start", endOffset = 730), # evan tar
+             CohortIncidence::createTimeAtRiskDef(id=9, startWith="start", startOffset = 1, endWith="start", endOffset = 364) # background rate tar
+             ) 
 
 # CohortGeneratorModuleSpecs is common for all
 cohortGeneratorModuleSpecifications <- createCohortGeneratorModuleSpecifications(
@@ -125,7 +127,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
+                                                                  tars = c(9)))
 
   # note: targets now contains the modified subset cohort IDs
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
@@ -206,7 +208,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
+                                                                  tars = c(9)))
 
 
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
@@ -281,7 +283,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
+                                                                  tars = c(9)))
 
 
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
@@ -362,7 +364,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
+                                                                  tars = c(9)))
 
 
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
@@ -436,7 +438,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
+                                                                  tars = c(9)))
 
 
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
@@ -497,7 +499,7 @@ studyWindow$endDate <- "2022-12-31"
     analysisList <- append(analysisList,
                            CohortIncidence::createIncidenceAnalysis(targets = targetXls$cohort_definition_id,
                                                                     outcomes = outcomeXls$id,
-                                                                    tars = c(2)))
+                                                                    tars = c(9)))
   };
 
   # to save time, we'll attach a clean_window = 0 and lookup the outcome ID here, and use it for the background analysis
@@ -553,15 +555,10 @@ studyWindow$endDate <- "2022-12-31"
       dplyr::inner_join(outcomeMap %>% select("id", "cohort_definition_id", "clean_window"), by=c('cohort_definition_id', 'clean_window'))
     outcomes<-rbind(outcomes, outcomeXls)
 
-    # due to benchmarking, we will execute 1 T at a time
-    for (i in 1:nrow(targetXls)){
-      targetRow <- targetXls[i,]
-      analysisList <- append(analysisList,
-                             CohortIncidence::createIncidenceAnalysis(targets = targetRow$cohort_definition_id,
-                                                                      outcomes = outcomeXls$id,
-                                                                      tars = c(1,2,3,4))
-      )
-    }
+    analysisList <- append(analysisList,
+                           CohortIncidence::createIncidenceAnalysis(targets = targetXls$cohort_definition_id,
+                                                                    outcomes = outcomeXls$id,
+                                                                    tars = c(1,2,3,4)))
 
   };
 
@@ -575,8 +572,7 @@ studyWindow$endDate <- "2022-12-31"
   analysisList <- append(analysisList,
                          CohortIncidence::createIncidenceAnalysis(targets = genPopTargetDef$id,
                                                                   outcomes = c(targets$id, outcomes$id),
-                                                                  tars = c(2)))
-
+                                                                  tars = c(9)))
 
   targetDefs <- lapply(targets$cohort_definition_id, function(targetCohortId) {
     targetCohortDef <- targets %>% filter(cohort_definition_id == targetCohortId)
